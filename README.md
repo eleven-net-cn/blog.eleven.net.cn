@@ -2,10 +2,18 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ## Quick Start
 
+> [命令行](https://hexo.io/zh-cn/docs/commands)
+
 ### Create a new post
 
 ``` bash
 $ hexo new "My New Post"
+```
+
+指定嵌套的文件夹、文件名及文章标题
+
+```bash
+hexo new "[post_title]" -p [folder_path/file_name.md]
 ```
 
 More info: [Writing](https://hexo.io/docs/writing.html)

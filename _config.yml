@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Eleven's blog
+title: ''
 subtitle: ''
 description: ''
 keywords:
 author: Eleven
 language: zh-CN
-timezone: 'beijing'
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -98,7 +98,9 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: 'git'
+  repo: 'git@e.coding.net:opus/blog.git'
+  branch: 'coding-pages'
 
 # hexo-generator-searchdb
 search:
