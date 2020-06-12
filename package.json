@@ -3,10 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "server": "hexo server",
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "release": "hexo generate && hexo deploy"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   },
   "hexo": {
     "version": "4.2.1"
@@ -24,6 +35,10 @@
     "hexo-server": "^1.0.0"
   },
   "devDependencies": {
-    "hexo-deployer-git": "^2.1.0"
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "gitmoji-cli": "^3.2.4",
+    "hexo-deployer-git": "^2.1.0",
+    "husky": "^4.2.5"
   }
 }
