@@ -2,6 +2,16 @@ Eleven 的技术博客：https://blog.eleven.net.cn/
 
 ## 运行命令
 
+- 新建文章（指定嵌套的文件夹、文件名及文章标题）
+
+  ```bash
+  hexo new "[post_title]" -p [folder_path/file_name.md]
+  ```
+
+  - post_title  文章标题
+  - folder_path 文章所在文件夹
+  - file_name   文章文件名
+
 - 本地调试
 
   ```bash
@@ -56,12 +66,6 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ``` bash
 $ hexo new "My New Post"
-```
-
-指定嵌套的文件夹、文件名及文章标题
-
-```bash
-hexo new "[post_title]" -p [folder_path/file_name.md]
 ```
 
 More info: [Writing](https://hexo.io/docs/writing.html)

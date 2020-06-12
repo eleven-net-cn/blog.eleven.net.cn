@@ -48,6 +48,8 @@ tags: Git
 4. 限制每一次 `git commit` 都执行交互式提交
 
     如果想要更暴力一点，限制每一次 `git commit` 都自动执行规范化地提交，可以配置 git 提交的钩子，借助 husky 更方便一点（不用 husky 当然也可以）。
+    
+    先将 scripts 中配置的 commit 命令删除，不再需要了。
 
     安装 husky
     
@@ -57,8 +59,6 @@ tags: Git
     
     在 package.json 中增加配置
     
-    > 限制了每一次 `git commit` 都触发，那么 scripts 中配置的 commit 命令就可以删除了。
-
     ```json
     {
       "husky": {
