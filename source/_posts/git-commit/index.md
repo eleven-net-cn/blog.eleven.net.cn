@@ -1,6 +1,7 @@
 ---
 title: 规范 git commit
 date: 2020-06-11 10:17:53
+category: Git
 tags: Git
 ---
 

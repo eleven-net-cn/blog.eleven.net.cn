@@ -1,7 +1,7 @@
 # Header
 menu:
-  首页: /
-  历史: /archives
+  # 首页: /
+  # 历史: /archives
 # rss: /atom.xml
 
 # Content
@@ -11,11 +11,11 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
+- recent_posts
 - category
 - tag
 - tagcloud
 - archive
-- recent_posts
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:

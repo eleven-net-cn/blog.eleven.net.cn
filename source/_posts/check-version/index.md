@@ -1,6 +1,7 @@
 ---
 title: 利用 Git 钩子提交时修改版本号
 date: 2020-06-11 10:07:48
+category: Git
 tags: Git
 ---
 

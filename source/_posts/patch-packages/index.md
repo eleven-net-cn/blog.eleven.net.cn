@@ -1,6 +1,7 @@
 ---
 title: 自动修改 node_moduels 的包
 date: 2020-06-11 10:23:01
+category: NPM
 tags: NPM
 ---
 
