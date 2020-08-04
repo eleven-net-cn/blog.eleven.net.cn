@@ -99,8 +99,8 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: 'git'
-  repo: 'git@e.coding.net:opus/blog.git'
-  branch: 'coding-pages'
+  repo: 'https://github.com/Eleven90/blog.eleven.net.cn'
+  branch: 'gh-pages'
 
 # hexo-generator-searchdb
 search:

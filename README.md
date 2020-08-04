@@ -1,4 +1,4 @@
-Eleven 的技术博客：https://blog.eleven.net.cn/
+https://blog.eleven.net.cn/
 
 ## 运行命令
 
@@ -28,9 +28,7 @@ Eleven 的技术博客：https://blog.eleven.net.cn/
 
   ```bash
   yarn build    # 编译
-
   yarn clean    # 清空编译结果
-
   yarn deploy   # 部署（到 coding pages）
   ```
 
