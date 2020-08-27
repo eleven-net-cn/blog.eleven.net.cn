@@ -42,6 +42,11 @@ tags: CSS3
     }
   }
 }
+
+// 使用
+.test {
+  .border-top(#eee);
+}
 ```
 
 ### SASS 上下 1px 细线
@@ -82,5 +87,13 @@ tags: CSS3
       transform: scaleY(0.33333);
     }
   }
+}
+
+// 使用
+.test {
+  // 上边线
+  @include border-1px(top, #e9e9e9);
+  // 下边线
+  @include border-1px(bottom, #e9e9e9);
 }
 ```
