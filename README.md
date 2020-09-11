@@ -15,7 +15,7 @@ https://blog.eleven.net.cn/
 - 本地调试
 
   ```bash
-  yarn server
+  yarn serve
   ```
 
 - 部署发布
