@@ -119,22 +119,24 @@
             <div class="box animated fadeInRight">
                 <div class="subbox">
                     <img src="<%- theme.avatar %>" height=300 width=300></img>
-                    <p><%- config.author %></p>
+                    <span><%- config.author %></span>
+                    <a href="<%- theme.socials.github %>" target="_blank"><span
+                        class=" iconfont icon-github"></span></a>
                     <span><%- theme.descriptionOne %></span>
-                    <dl>
+                    <!-- <dl>
                         <dd><a href="<%- theme.socials.github %>" target="_blank"><span
                                     class=" iconfont icon-github"></span></a></dd>
                         <dd><a href="<%- theme.socials.twitter %>" target="_blank"><span
                                     class=" iconfont icon-twitter"></span></a></dd>
                         <dd><a href="<%- theme.socials.stackoverflow %>" target="_blank"><span
                                     class=" iconfont icon-stack-overflow"></span></a></dd>
-                    </dl>
+                    </dl> -->
                 </div>
-                <ul>
+                <!-- <ul>
                     <li><a href="/"><%- site.posts.length %> <p><%= __('articles') %></p></a></li>
                     <li><a href="/categories"><%- site.categories.length %> <p><%= __('categories') %></p></a></li>
                     <li><a href="/tags"><%- site.tags.length %> <p><%= __('tags') %></p></a></li>
-                </ul>
+                </ul> -->
             </div>
             <% if (theme.TOC == true) { %>
             <% toc = toc(page.content, {list_number: true, max_depth: 3}) %>

@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: '低头做事，抬头看天'
+title: 'Eleven'
 subtitle: ''
 description: ''
 keywords: '前端，JavaScript，js，es6，typescript，nodejs，webpack，rollup，npm'
@@ -45,7 +45,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''

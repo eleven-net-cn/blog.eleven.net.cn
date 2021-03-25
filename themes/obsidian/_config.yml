@@ -42,21 +42,21 @@ version: '1.4.5'
 # Menu setting | format = title_name: link_url
 menu:
   # 关于: /whoami
-  分类: /categories
-  标签: /tags
-  归档: /archives
+  # 分类: /categories
+  # 标签: /tags
+  时光轴: /archives
 
 # Page custom titles
 page_titles:
   categories: 'Categories'
   tags: 'Tags'
-  archives: 'Archived'
+  archives: '时光轴'
 
 # Social media links
 socials:
-  github: 'https://github.com/TriDiamond'
-  twitter: 'https://twitter.com/TriDiamond6'
-  stackoverflow: 'https://stackoverflow.com/users/7602324/tridiamond?tab=profile'
+  github: 'https://github.com/eleven-net-cn'
+  # twitter: 'https://twitter.com/TriDiamond6'
+  # stackoverflow: 'https://stackoverflow.com/users/7602324/tridiamond?tab=profile'
 
 # Enable table of content
 TOC: true
@@ -74,11 +74,11 @@ avatar: https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamon
 scrollbar: true
 
 # Website keywords used for SEO
-keywords: eleven,前端
+keywords: Eleven,前端
 
 # Website slogans
-descriptionOne: 'Think like an artist, develop like an artisan'
-descriptionTwo: '艺术家思维去思考问题，工匠创造精神去开发'
+descriptionOne: '人生没有重启键，一去不回头。'
+descriptionTwo: '劝君莫惜金缕衣，劝君惜取少年时。'
 
 # If you use google analytics, please fill in the ID
 google_analytics: 'UA-149874671-1'
@@ -94,7 +94,7 @@ rss: atom.xml
 # ---------------------------------------------------------------
 
 # Auto play article audio
-autoplay: true
+autoplay: false
 
 # default mp3 file
 mp3:
@@ -171,7 +171,7 @@ sharejs:
 # modes see: https://codemirror.net/mode/
 # see https://codemirror.net/
 codemirror:
-  modes: ['javascript', 'css', 'less', 'sass', 'scss', 'xml', 'htmlmixed', 'clike', 'php', 'shell', 'python']
+  modes: ['javascript', 'css', 'sass', 'xml', 'htmlmixed', 'clike', 'php', 'shell', 'python']
 
 # Enabling mathjax support
 mathjax: true
