@@ -39,11 +39,6 @@ jobs:
       - name: Build
         run: |
           yarn
-          cd themes/obsidian
-          pwd
-          npm i
-          cd ../..
-          pwd
           yarn build
 
       - name: Deploy
