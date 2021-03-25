@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: '12.x'
 
-      - name: set git config
+      - name: Set git config
         run: |
           git config --global init.defaultBranch master
           git config --global user.name "Eleven"
