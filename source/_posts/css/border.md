@@ -12,9 +12,6 @@ tags: CSS3
 ### LESS 上边线 1px
 
 ```less
-/**
- * 1px细线 - 上边线
- */
 .border-top(@color) {
   position: relative;
 
