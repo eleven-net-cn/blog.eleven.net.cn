@@ -33,7 +33,7 @@ jobs:
       - name: set git config
         run: |
           git config --global init.defaultBranch master
-          git config --global user.name "Eleven"
+          git config --global user.name "eleven-net-cn"
           git config --global user.email "master@eleven.net.cn"
 
       # Runs a single command using the runners shell
