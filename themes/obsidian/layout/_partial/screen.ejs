@@ -19,14 +19,29 @@
             <!-- <a class="image-logo" href="/"></a> -->
         </div>
         <ul id="menu-menu" class="menu text-menu">
+            <% for (var i in theme.menu){ %>
+                <% var _menu = theme.menu[i]; %>
+                <% if(typeof _menu !== 'string'){ %>
+                    <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                        <p class="menu-second-info"><%= i %></p>
+                        <ul class="menu menu-second text-menu">
+                            <% for (var m in _menu){ %>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                    <%- link_to(_menu[m].lastIndexOf('/') > 0 ? _menu[m] : _menu[m] + '/', m, {external: false, class: "menu-link"})%>
+
+                                </li>
+                            <% } %>
+                        </ul>
+                    </li>
+                <% } else { %>
+                    <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                        <%- link_to(theme.menu[i].lastIndexOf('/') > 0 ? theme.menu[i] : theme.menu[i] + '/', i, {external: false, class: "menu-link"})%>
+                    </li>
+                <% } %>
+            <%}%>
             <% if (config.search) { %>
             <li class="animated fadeInDown search-bar iconfont icon-search"></li>
             <% } %>
-            <% for (var i in theme.menu){ %>
-            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
-                <%- link_to(theme.menu[i].lastIndexOf('/') > 0 ? theme.menu[i] : theme.menu[i] + '/', i, {external: false, class: "menu-link"})%>
-            </li>
-            <%}%>
         </ul>
         <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
     </div>

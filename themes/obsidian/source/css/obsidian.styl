@@ -773,7 +773,8 @@ body.touch {
 }
 
 &::-webkit-scrollbar {
-  width: 10px;
+  // width: 10px;
+  width: 0;
   height: 10px;
   background: #100e17;
   border-left: 1px solid #201c29;
@@ -1043,14 +1044,46 @@ footer {
   right: 0;
   top: 0;
 
+  &.menu-second {
+    display: none;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    height: auto;
+    flex-direction: column;
+    min-width: 240px;
+    padding: 10px 10px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    li {
+      display: inline-block;
+      font-size: 16px;
+      margin: 0;
+      text-align: left;
+
+      a {
+        font-weight: bold;
+        white-space: nowrap;
+      }
+    }
+  }
+
   li {
+    position: relative;
     animation-delay: 600ms;
     animation-duration: 1.2s;
     display: flex;
     flex-direction: row-reverse;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 32px;
     margin: 0 20px 20px 0;
+
+    &:hover {
+      .menu-second {
+        display: inline-flex;
+      }  
+    }
 
     &.search-bar {
       position: relative;
@@ -1094,9 +1127,9 @@ footer {
     }
   }
 
-  a {
+  .menu-second-info {
     color: #666;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     background: rgba(255, 255, 255, 0.96);
     opacity: 0.86;
     -webkit-background-clip: text !important;
@@ -1105,6 +1138,22 @@ footer {
     box-decoration-break: clone !important;
     height: 32px;
     line-height: 32px;
+    cursor: default;
+    font-weight: bold;
+  }
+
+  a {
+    color: #666;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.96);
+    opacity: 0.86;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    -webkit-box-decoration-break: clone !important;
+    box-decoration-break: clone !important;
+    height: 32px;
+    line-height: 32px;
+    font-weight: bold;
 
     &:hover {
       color: #333;
@@ -2204,7 +2253,7 @@ h1.title {
           margin-top: 5px;
 
           span {
-            font-size: 16px;
+            font-size: 18px;
           }
 
           &:hover {
