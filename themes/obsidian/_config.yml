@@ -70,7 +70,7 @@ welcome_cover: /img/abc/3701616737444_.pic_hd.jpg
 article_cover: /img/welcome-cover.jpg
 
 # 默认的文章列表插图
-post_cover: /img/abc/3741616737466_.pic_hd.jpg
+post_cover: /img/welcome-cover.jpg
 
 # 所有 cover 的兜底备用
 cover: /img/welcome-cover.jpg
@@ -79,7 +79,7 @@ cover: /img/welcome-cover.jpg
 avatar: /img/abc/eleven.net.cn.jpeg
 
 # Disable default scrollbar
-scrollbar: true
+scrollbar: false
 
 # Website keywords used for SEO
 keywords: Eleven,前端

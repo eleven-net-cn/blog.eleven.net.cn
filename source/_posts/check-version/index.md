@@ -1,11 +1,11 @@
 ---
-title: 利用 Git 钩子提交时修改版本号
+title: Git Hook 提交时修改版本号
 date: 2020-06-11 10:07:48
 category: Git
 tags: Git
 ---
 
-前端项目在 git 提交时，往往会遗忘更新项目根目录的 package.json 文件的 version，通常不修改也不会有啥问题，但对于强迫症来说，不能忍！咱要改掉它......
+前端项目在 Git 提交时，往往会遗忘更新项目根目录的 package.json 文件的 version，通常不修改也不会有啥问题，但对于强迫症来说，不能忍！咱要改掉它......
 
 #### 编写一个简单的 node 脚本 `check-version.js`
 
