@@ -42,9 +42,10 @@ version: '1.4.5'
 # Menu setting | format = title_name: link_url
 menu:
   # 关于: /whoami
-  # 分类: /categories
+  # Categories: /categories
   # 标签: /tags
-  Webpack: 'https://webpack.eleven.net.cn/'
+  # 效率工具: 
+  Webpack专题: 'https://webpack.eleven.net.cn/'
   GitHub: 'https://github.com/eleven-net-cn'
   时光轴: /archives
 

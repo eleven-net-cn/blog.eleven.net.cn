@@ -3031,6 +3031,16 @@ h1.title {
     position: relative;
     font-weight: 900;
 
+    &.headerlink {
+      &:after {
+        top: 0;
+        bottom: 1px;
+        left: -7px;
+        width: 5px;
+        opacity: 1;
+      }
+    }
+
     &:after {
       content: "";
       position: absolute;
