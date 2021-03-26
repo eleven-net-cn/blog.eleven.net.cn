@@ -119,10 +119,14 @@
             <div class="box animated fadeInRight">
                 <div class="subbox">
                     <img src="<%- theme.avatar %>" height=300 width=300></img>
-                    <span><%- config.author %></span>
-                    <a href="<%- theme.socials.github %>" target="_blank"><span
-                        class=" iconfont icon-github"></span></a>
-                    <span><%- theme.descriptionOne %></span>
+                    <div class="span-wrapper">
+                        <a href="<%- theme.socials.github %>" target="_blank">
+                            <span><%- config.author %></span>
+                            <span class=" iconfont icon-github"></span>
+                        </a>
+                    </div>
+                    <p><%- theme.descriptionOne %></p>
+                    <!-- <span><%- theme.descriptionOne %></span> -->
                     <!-- <dl>
                         <dd><a href="<%- theme.socials.github %>" target="_blank"><span
                                     class=" iconfont icon-github"></span></a></dd>

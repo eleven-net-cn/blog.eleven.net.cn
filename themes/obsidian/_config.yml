@@ -94,11 +94,11 @@ rss: atom.xml
 # ---------------------------------------------------------------
 
 # Auto play article audio
-autoplay: false
+autoplay: true
 
 # default mp3 file
 mp3:
-  - statics/chengdu.mp3
+  - statics/Beautiful In White.mp3
 
 # ---------------------------------------------------------------
 # Plugins
