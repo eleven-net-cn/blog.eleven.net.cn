@@ -1,8 +1,9 @@
 ---
-title: 无 eject 重写 cra 配置（craco）
+title: 无 eject 重写 CRA 配置 —— craco 详解
 date: 2020-09-11 16:43:40
 category: react
 tags: create-react-app
+cover: /img/basketball.jpg
 ---
 
 使用 CRA 脚手架创建的项目，如果想要修改编译配置，通常可能会选择 `npm run eject` 弹出配置后魔改。但是，eject 是不可逆操作，弹出配置后，你将无法跟随官方的脚步去升级项目的 react-script 版本。

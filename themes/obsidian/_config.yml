@@ -44,6 +44,8 @@ menu:
   # 关于: /whoami
   # 分类: /categories
   # 标签: /tags
+  Webpack: 'https://webpack.eleven.net.cn/'
+  GitHub: 'https://github.com/eleven-net-cn'
   时光轴: /archives
 
 # Page custom titles
@@ -61,14 +63,20 @@ socials:
 # Enable table of content
 TOC: true
 
-# Home page first post default cover image, default use cover
-welcome_cover: /img/cover.jpg
+# 首页封面大图
+welcome_cover: /img/abc/3701616737444_.pic_hd.jpg
 
-# Article default cover image
+# 默认的文章头图
+article_cover: /img/welcome-cover.jpg
+
+# 默认的文章列表插图
+post_cover: /img/abc/3741616737466_.pic_hd.jpg
+
+# 所有 cover 的兜底备用
 cover: /img/welcome-cover.jpg
 
 # Avatar
-avatar: https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg
+avatar: /img/abc/eleven.net.cn.jpeg
 
 # Disable default scrollbar
 scrollbar: true
