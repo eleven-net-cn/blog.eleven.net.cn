@@ -41,9 +41,6 @@ version: '1.4.5'
 
 # Menu setting | format = title_name: link_url
 menu:
-  # 关于: /whoami
-  # Categories: /categories
-  # 标签: /tags
   FE-Ground: https://fe-ground.eleven.net.cn/
   效率工具: 
     library-starter: https://github.com/eleven-net-cn/library-starter
@@ -58,8 +55,8 @@ menu:
 
 # Page custom titles
 page_titles:
-  categories: 'Categories'
-  tags: 'Tags'
+  categories: '分类'
+  tags: '标签'
   archives: '时光轴'
 
 # Social media links
