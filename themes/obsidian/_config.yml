@@ -44,6 +44,7 @@ menu:
   # 关于: /whoami
   # Categories: /categories
   # 标签: /tags
+  FE-Ground: https://fe-ground.eleven.net.cn/
   效率工具: 
     library-starter: https://github.com/eleven-net-cn/library-starter
     cra-template-typescript: https://www.npmjs.com/package/@eleven.fe/cra-template-typescript
@@ -99,7 +100,8 @@ descriptionTwo: '劝君莫惜金缕衣，劝君惜取少年时。'
 google_analytics: 'UA-149874671-1'
 
 # Website favicon
-favicon: /img/favicon.png
+favicon: /img/abc/eleven.net.cn.jpeg
+# favicon: /img/favicon.png
 
 # rss file
 rss: atom.xml
