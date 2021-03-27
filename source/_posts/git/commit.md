@@ -2,7 +2,7 @@
 title: 规范 git commit
 date: 2020-03-25 10:17:53
 category: Git
-tags: Git
+tags: [Git]
 ---
 
 如何让 `git commit` 提交时更加规范？例如：vue、angular，如下图。规范化地提交记录，会让将来的回溯查找更容易，也让其他人阅读起来更加简便。
@@ -111,7 +111,7 @@ git commit -m "fix(src): :bug: 修复列表显示问题"
 - chore: 改变构建流程、或者增加依赖库、工具等。
 - revert: 版本回滚
 
-## 自己手写 commit 的推荐写法
+## 手写 commit 的推荐写法
 如果通过简单的 git commit -m "" 提交，你大概可以这样写：
 
 ```bash

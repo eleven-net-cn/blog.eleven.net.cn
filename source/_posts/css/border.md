@@ -2,7 +2,7 @@
 title: 1px 细线实现
 date: 2020-08-26 20:26:13
 category: CSS3
-tags: CSS3
+tags: 1px-border
 ---
 
 采用缩放方案，单条边线好处理一点；如果需要四边都有边线，会有点麻烦，使用缩放方案，虽然可行，但是在部分设备上有间隙问题，建议放弃，或者使用 svg 来做 background-image。

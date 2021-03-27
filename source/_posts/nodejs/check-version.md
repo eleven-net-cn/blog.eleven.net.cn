@@ -1,8 +1,8 @@
 ---
 title: Git Hook 提交时修改版本号
 date: 2020-03-12 10:07:48
-category: Git
-tags: Git
+category: NodeJS
+tags: [Git, NPM, NodeJS]
 ---
 
 前端项目在 Git 提交时，往往会遗忘更新项目根目录的 package.json 文件的 version，通常不修改也不会有啥问题，但对于强迫症来说，不能忍！咱要改掉它......
@@ -14,16 +14,16 @@ tags: Git
 ```js
 // /scripts/check-version.js
 
-const inquirer = require('inquirer')
-const chalk = require('chalk')
-const { exec } = require('child_process')
-const { name: projectName, version: versionCurrent } = require('../package')
+const inquirer = require('inquirer');
+const chalk = require('chalk');
+const { exec } = require('child_process');
+const { name: projectName, version: versionCurrent } = require('../package');
 
-const regVersion = /^[1-9]{1}\d*\.\d+\.\d+$/ // 示例: 1.0.0
+const regVersion = /^[1-9]{1}\d*\.\d+\.\d+$/; // 示例: 1.0.0
 // const regVersion = /^\d+\.\d+\.\d+$/ // 示例: 0.0.1 / 1.0.1
 // const regVersion = /^\d+\.\d+\.\d+(-beta.?\d*)?$/ // 示例: 1.0.3 / 0.0.1-beta / 1.0.0-beta.3
 
-console.log('\n')
+console.log('\n');
 
 // 确认 package.json 版本号
 inquirer
@@ -36,10 +36,10 @@ inquirer
       validate(version) {
         // 校验版本号的格式
         if (!regVersion.test(version)) {
-          console.log(chalk.yellow('输入的版本号无效，请检查格式（示例：1.0.0、2.3.2）'))
-          return false
+          console.log(chalk.yellow('输入的版本号无效，请检查格式（示例：1.0.0、2.3.2）'));
+          return false;
         }
-        return true
+        return true;
       },
     },
   ])
@@ -52,46 +52,46 @@ inquirer
             chalk.green(
               `\n${projectName} 版本号（项目根目录下的 package.json/version）更新成功，version: ${versionNew} ！`,
             ),
-          )
+          );
           command(
             `git add package.json && git commit -m 'ci(package.json): 更新项目版本号为：${versionNew}'`,
-          )
-          console.log(`\n`)
-          process.exit(0)
+          );
+          console.log(`\n`);
+          process.exit(0);
         } else {
-          console.log(chalk.yellow(`\n更新版本号（${versionNew}）失败了~\n`))
-          process.exit(1)
+          console.log(chalk.yellow(`\n更新版本号（${versionNew}）失败了~\n`));
+          process.exit(1);
         }
-      })
+      });
     } else {
-      console.log(chalk.green(`\n本次版本号未做修改，version: ${versionNew} ！\n`))
+      console.log(chalk.green(`\n本次版本号未做修改，version: ${versionNew} ！\n`));
     }
-  })
+  });
 
 function command(cmd, options, callback) {
-  console.log('\n')
-  console.log(chalk.cyan(cmd.toString()))
-  return exec(cmd, { ...options }, callback)
+  console.log('\n');
+  console.log(chalk.cyan(cmd.toString()));
+  return exec(cmd, { ...options }, callback);
 }
 ```
-    
+
 #### 配置 Git 钩子
 
 1. 先安装 `husky`，用于管理 git 钩子，当然，使用原生的也可以。
 
-    ```bash
-    yarn add husky -D
-    ```
+   ```bash
+   yarn add husky -D
+   ```
 
 2. 在项目的 package.json 文件中增加以下配置：
 
-    ```json
-    "husky": {
-      "hooks": {
-        "post-commit": "exec < /dev/tty && node scripts/check-version.js"
-      }
-    },
-    ```
+   ```json
+   "husky": {
+     "hooks": {
+       "post-commit": "exec < /dev/tty && node scripts/check-version.js"
+     }
+   },
+   ```
 
 #### 使用
 
