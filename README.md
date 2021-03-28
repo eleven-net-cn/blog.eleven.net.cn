@@ -31,7 +31,7 @@ https://blog.eleven.net.cn/
   ```bash
   yarn build    # 编译
   yarn clean    # 清空编译结果
-  yarn deploy   # 部署（到 coding pages）
+  yarn deploy   # 部署（到 github pages）
   ```
 
 ## 目录
