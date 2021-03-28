@@ -47,8 +47,8 @@ menu:
     '@eleven.fe/cra-template-typescript': https://www.npmjs.com/package/@eleven.fe/cra-template-typescript
     '@eleven.fe/cra-template': https://www.npmjs.com/package/@eleven.fe/cra-template
   通用类库:
-    reset.css: https://www.npmjs.com/package/@eleven.fe/reset.css
-    ball-collision: https://www.npmjs.com/package/@eleven.fe/ball-collision
+    '@eleven.fe/reset.css': https://www.npmjs.com/package/@eleven.fe/reset.css
+    '@eleven.fe/ball-collision': https://www.npmjs.com/package/@eleven.fe/ball-collision
   Webpack专题: 'https://webpack.eleven.net.cn/'
   GitHub: 'https://github.com/eleven-net-cn'
   时光轴: /archives
