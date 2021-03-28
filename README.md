@@ -42,9 +42,9 @@ blog
   ├── node_modules/
   ├── public/             # 编译结果目录
   ├── scaffolds/          # 模版
-  ├── source/             # 文章书写
-  │     ├── _posts/       # 文章
-  │     ├── CNAME         # 域名解析 CNAME
+  ├── src/                # 文章书写
+  │     ├── _posts/         # 文章
+  │     ├── CNAME           # 域名解析 CNAME
   │
   ├── themes/             # 主题
   │
