@@ -133,6 +133,8 @@ gitalk:
   distractionFreeMode: true
   # Facebook-like distraction
   proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+  # 手动开启文章的评论（新建 issues），默认无需手动开启
+  # createIssueManually: trues
 
 # Valine comment plugin (recommended!)
 # see https://valine.js.org/quickstart.html
