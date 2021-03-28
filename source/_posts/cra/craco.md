@@ -1,7 +1,7 @@
 ---
 title: 无 eject 重写 CRA 配置 — Craco 详解
 date: 2020-09-11 16:43:40
-category: react
+category: React
 tags: create-react-app
 cover: /img/basketball.jpg
 ---
