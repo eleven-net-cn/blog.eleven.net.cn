@@ -138,8 +138,8 @@ gitalk:
 # see https://valine.js.org/quickstart.html
 valine:
   enable: false
-  app_id: hkm8dtO9l1LGafjtOfx8tvBd-gzGzoHsz
-  app_key: UOfcRu89reXtwqeIXPzpMYMj
+  app_id: 
+  app_key: 
   notify: true
   verify: false
   avatar: 'mp'
