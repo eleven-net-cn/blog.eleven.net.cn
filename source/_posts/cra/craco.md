@@ -21,7 +21,7 @@ cover: /img/basketball.jpg
 
 第二种方式相对第三种略复杂一些，并且我注意到 AntDesign 官方也开始推荐 [craco](https://github.com/gsoft-inc/craco) 了，这里详细讨论一下第三种 [craco](https://github.com/gsoft-inc/craco) 的使用，经过项目的实测，用起来还算顺手。
 
-### 基础配置
+## 基础配置
 
 1. 安装包
 
@@ -56,7 +56,7 @@ cover: /img/basketball.jpg
     
 基础的配置到此完成了，接下来是处理各种配置的覆盖，完整的 craco.config.js 配置文件结构，可以在 craco 官方的文档中详细查询：[Configuration Overview](https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#configuration-overview) 。
     
-### 区分环境
+## 区分环境
 
 @craco/craco 提供了 `whenDev、whenProd、whenTest、when` 函数，用于在书写 craco.config.js 配置文件时根据不同的编译环境确定配置，先看一下 craco 相关的源码：
 
@@ -108,13 +108,13 @@ const { whenDev, whenProd, when } = require('@craco/craco')
 
 下方的示例中有多处使用，可以参照了解其用途。
     
-### 常用配置
+## 常用配置
 
 craco 有提供一些 [plugins](https://github.com/gsoft-inc/craco#community-maintained-plugins)，集成了诸多功能，让覆盖配置变得更加容易。
 
 除此之外，则需要我们对 webpack 的配置有一定的了解，根据 craco.config.js 的文件结构去增加配置。
 
-#### 通过 configure 函数扩展 webpack 配置
+### 通过 configure 函数扩展 webpack 配置
 
 几乎所有的 webpack 配置均可以在 configure 函数中读取、覆盖，webpack 详细的配置参数结构可以查阅 webpack 官方的文档：https://webpack.js.org/configuration/ 。
 
@@ -181,7 +181,7 @@ module.exports = {
 }
 ```
 
-#### 扩展 babel 配置
+### 扩展 babel 配置
 
 虽然可以在 configure 中定义 babel 配置，但 craco 也提供了快捷的方式单独去书写，添加 `@babel/preset-env` 配置示例如下：
 
@@ -214,7 +214,7 @@ module.exports = {
 
 更详细的 babel 相关配置，推荐我之前整理的：https://webpack.eleven.net.cn/content/babel/ 。
 
-#### 扩展 webpack alias（别名）
+### 扩展 webpack alias（别名）
 
 虽然可以在 configure 中定义 alias，但 craco 也提供了快捷的方式单独去书写。
 
@@ -287,7 +287,7 @@ tsconfig.edit.json
 
 另外，craco 也提供了一个 plugin 专门用于修改 alias，以及处理 tsconfig 的问题，[传送门](https://github.com/risenforces/craco-alias)，该页面下方的 Examples 中，详细说明了 tsconfig 的方案，推荐使用。
 
-#### 新增 webpack plugins
+### 新增 webpack plugins
 
 如果想要新增一些 webpack plugins，可以直接在与 configure 平级的位置添加。当然，你在 configure 里添加也可以，但不推荐。
 
@@ -341,7 +341,7 @@ module.exports = {
 }
 ```
 
-#### 扩展 react-hot-loader
+### 扩展 react-hot-loader
 
 常用的热更新方案 react-hot-loader，craco 提供了专门的 craco plugin（[传送门](https://github.com/HasanAyan/craco-plugin-react-hot-reload)），配置如下：
 
@@ -396,7 +396,7 @@ import App from './App'
 + ReactDOM.render(<Root />, document.getElementById('root'))
 ```
 
-#### 比 react-hot-loader 更好的方案 craco-fast-refresh
+### 比 react-hot-loader 更好的方案 craco-fast-refresh
 
 这是最近发现的新 craco plugin，相对于 react-hot-loader 好用得多，零配置，不需要修改项目代码，据说性能也更好。
 
@@ -430,7 +430,7 @@ module.exports = {
 }
 ```
 
-#### AntDesign 自定义主题 & 按需加载
+### AntDesign 自定义主题 & 按需加载
 
 - 在 bebel 配置中新增 `babel-plugin-import`，搞定 AntDesign 按需加载
 - 新增 craco 提供的 plugin `craco-less`，搞定自定义主题
