@@ -63,7 +63,15 @@
                     omission: "..."
                 }) %>
             <% } %>
-            <span class="read-more"><%- link_to(post.path, __('read_article', 'Read article'), {class: 'posttitle'}) %> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+            <span class="read-more">
+                <%
+                    var strReadMore = link_to(post.path, __('read_article', 'Read article'), {class: 'posttitle'});
+                    var title = post.title || config.title;
+                    strReadMore = strReadMore.replace('查看全文', title);
+                %>
+                <%- strReadMore %>
+                <b class="iconfont icon-arrow-right- gradient-text"></b>
+            </span>
         </div>
     </div>
 </div>

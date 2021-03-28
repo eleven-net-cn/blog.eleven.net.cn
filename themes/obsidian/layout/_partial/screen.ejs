@@ -21,7 +21,7 @@
   <div>
     <div class="logo animated fadeInDown">
       <a href="/">
-      <!-- <a href="<%- url_for(theme.socials.github) %>"> -->
+        <!-- <a href="<%- url_for(theme.socials.github) %>"> -->
         <img src="<%- url_for(theme.favicon) %>" alt="" />
       </a>
     </div>
@@ -109,8 +109,13 @@
       theme.html_truncate.excludes, keepWhitespaces: theme.html_truncate.keepWhitespaces,
       reserveLastWord: theme.html_truncate.reserveLastWord }) %> <% } else { %> <%-
       truncate(strip_html(first.content), { length: 200, omission: '...' }) %> <% } %>
-      <span class="read-more"
-        ><%- link_to(first.path, __('read_article', 'Read article'), {class: "posttitle"}) %>
+      <span class="read-more">
+        <% 
+          var strReadMore = link_to(first.path, __('read_article', 'Read article'), {class: "posttitle"});
+          var title = first.title || config.title;
+          strReadMore = strReadMore.replace('查看全文', title);
+        %>
+        <%- strReadMore %>
         <b class="iconfont icon-arrow-right- gradient-text"></b
       ></span>
     </div>
