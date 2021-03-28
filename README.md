@@ -44,7 +44,6 @@ blog
   ├── scaffolds/          # 模版
   ├── src/                # 文章书写
   │     ├── _posts/         # 文章
-  │     ├── CNAME           # 域名解析 CNAME
   │
   ├── themes/             # 主题
   │
