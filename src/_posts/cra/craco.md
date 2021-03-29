@@ -343,6 +343,8 @@ module.exports = {
 
 ### 扩展 react-hot-loader
 
+> CRA v4.0 开始已经内置了 fast refresh —— https://github.com/facebook/create-react-app/releases/tag/v4.0.0 ，不必自己扩展 hot loader。
+
 常用的热更新方案 react-hot-loader，craco 提供了专门的 craco plugin（[传送门](https://github.com/HasanAyan/craco-plugin-react-hot-reload)），配置如下：
 
 ```sh
@@ -397,6 +399,8 @@ import App from './App'
 ```
 
 ### 比 react-hot-loader 更好的方案 craco-fast-refresh
+
+> CRA v4.0 开始已经内置了 fast refresh —— https://github.com/facebook/create-react-app/releases/tag/v4.0.0 ，不必自己扩展 hot loader。
 
 这是最近发现的新 craco plugin，相对于 react-hot-loader 好用得多，零配置，不需要修改项目代码，据说性能也更好。
 
