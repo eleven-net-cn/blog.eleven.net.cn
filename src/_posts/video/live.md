@@ -3,6 +3,7 @@ title: 「转」H5直播流原理与实践方案
 date: 2021-03-28 12:22:05
 category: Video
 tags: [直播, Video, Live]
+cover: /img/abc/3711616737449_.pic_hd.jpg
 ---
 
 > 转自 DuPei 同学的文档，这是比较全面的方案调研，转载分享给更多人，待将来需要时细细研究。

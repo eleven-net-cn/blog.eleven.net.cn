@@ -3,6 +3,7 @@ title: Babel 编译误伤 core-js？
 date: 2021-03-26 19:46:28
 category: Babel
 tags: [Babel, Webpack]
+cover: /img/abc/3741616737466_.pic_hd.jpg
 ---
 
 一个不太常见，但很重要的 core-js bug 讨论：https://github.com/zloirock/core-js/issues/514

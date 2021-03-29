@@ -3,6 +3,7 @@ title: 模块间循环引用问题
 date: 2020-06-11 18:02:52
 category: NodeJS
 tags: [Webpack, NodeJS]
+cover: https://cdn.nba.com/manage/2020/10/kyrie-irving-iso-1-784x523.jpg
 ---
 
 有时候可能会遇见这样的场景：模块A引用了模块B里的func1方法，而模块B又引用了模块A里的func2方法。
