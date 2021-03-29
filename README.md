@@ -1,4 +1,4 @@
-## 博客地址
+## Eleven 的博客
 
 https://blog.eleven.net.cn/
 
@@ -31,7 +31,7 @@ https://blog.eleven.net.cn/
   ```bash
   yarn build    # 编译
   yarn clean    # 清空编译结果
-  yarn deploy   # 部署（到 coding pages）
+  yarn deploy   # 部署（到 github pages）
   ```
 
 ## 目录
@@ -44,7 +44,6 @@ blog
   ├── scaffolds/          # 模版
   ├── src/                # 文章书写
   │     ├── _posts/         # 文章
-  │     ├── CNAME           # 域名解析 CNAME
   │
   ├── themes/             # 主题
   │
