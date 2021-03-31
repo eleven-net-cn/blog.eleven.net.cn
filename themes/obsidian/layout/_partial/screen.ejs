@@ -97,15 +97,16 @@
         data-flag-title="<%- page.title %>"
       >
         <b class="iconfont icon-read"></b> <i><%= __('read_count') %></i>
-        <span class="leancloud-visitors-count">1000000</span>
+        <span class="leancloud-visitors-count">--</span>
       </span>
       <% } %>
-      <% if (theme.busuanzi.enable == true && theme.valine.enable == false) { %>
+      <!-- 是统计网站总的访问量，而非某篇文章 -->
+      <!-- <% if (theme.busuanzi.enable == true && theme.valine.enable == false) { %>
       <span id="busuanzi_container_page_pv">
           <b class="iconfont icon-read"></b> <i><%= __('read_count') %></i>
           <span id="busuanzi_value_page_pv">--</span>
       </span>
-      <% } %>
+      <% } %> -->
     </p>
     <% } %> <% if (first.tags && first.tags.length){ %> <%- list_tags(first.tags, { show_count:
     false, class: 'animated fadeInDown post-tags' }) %> <% } %>

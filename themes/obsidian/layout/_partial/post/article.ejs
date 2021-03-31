@@ -41,13 +41,7 @@
                 <% if (theme.valine.enable == true && theme.valine.visitor == true) { %>
                 <span id="<%- '/' + page.path %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
                     <b class="iconfont icon-read"></b> <i><%= __('read_count') %></i>
-                    <span class="leancloud-visitors-count">1000000</span>
-                </span>
-                <% } %>
-                <% if (theme.busuanzi.enable == true && theme.valine.enable == false) { %>
-                <span id="busuanzi_container_page_pv">
-                    <b class="iconfont icon-read"></b> <i><%= __('read_count') %></i>
-                    <span id="busuanzi_value_page_pv">--</span>
+                    <span class="leancloud-visitors-count">--</span>
                 </span>
                 <% } %>
             </p>
@@ -110,8 +104,7 @@
             <% } %>            
             <% if (theme.gitalk.enable == true){%>
             <%- partial('gitalk', {post: page}) %>
-            <% } %>
-            <% if (theme.valine.enable == true){%>
+            <% } else if (theme.valine.enable == true){ %>
             <div id="vcomments"></div>
             <% } %>
         </div>

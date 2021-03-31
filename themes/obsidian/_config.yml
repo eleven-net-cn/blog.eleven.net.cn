@@ -138,10 +138,11 @@ gitalk:
 
 # Valine comment plugin (recommended!)
 # see https://valine.js.org/quickstart.html
+# 这里修改了源码，优先使用 gitalk，valine 主要用于统计文章浏览量
 valine:
-  enable: false
-  app_id: 
-  app_key: 
+  enable: true
+  app_id: hkm8dtO9l1LGafjtOfx8tvBd-gzGzoHsz
+  app_key: UOfcRu89reXtwqeIXPzpMYMj
   notify: true
   verify: false
   avatar: 'mp'
@@ -176,8 +177,9 @@ html_truncate:
 
 # Enable Busuanzi statistic plugin
 # see http://ibruce.info/2015/04/04/busuanzi/
+# 仅统计网站总的浏览量
 busuanzi:
-  enable: true
+  enable: false
 
 #Enable social media sharing
 sharejs:
