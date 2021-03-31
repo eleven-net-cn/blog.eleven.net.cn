@@ -35,12 +35,12 @@
                         ) %>
                     </span>
                 <% } %>
-                <% if (theme.valine.enable == true && theme.valine.visitor == true) { %>
+                <!-- <% if (theme.valine.enable == true && theme.valine.visitor == true) { %>
                     <span id="<%- '/' + post.path %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
                         <b class="iconfont icon-read"></b> <i><%= __('read_count') %></i>
                         <span class="leancloud-visitors-count">--</span>
                     </span>
-                <% } %>
+                <% } %> -->
             </p>
             <% if (post.tags && post.tags.length){ %>
                 <%- list_tags(post.tags, {
