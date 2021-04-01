@@ -41,8 +41,6 @@ tags: NPM
 
    `postinstall` 是 npm 的钩子，会在依赖包被 `install` 之后被执行。
 
-   在卸载 node_modules 某个包时，已经被修改过的代码会被移除，因此增加 `postuninstall` 来解决。
-
 3. 上面两步都做了，就可以去修改 node_modules 里任意第三方包的源码了。
 
 4. 修改了源码，随后需要执行以下命令：
