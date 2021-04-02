@@ -16,7 +16,7 @@ core-js 是 es3 的代码，应当是不需要 babel 编译的，但是，因为
 
 ## 解决办法
 
-暂时需要手动将 core-js 添加到 babel 的 exclude 配置中，显示指定 babel 不要去处理它。日常也可能会使用 react-app-polyfill，一并声明不做处理。
+暂时需要手动将 core-js 添加到 `babel-loader` 的 `exclude` 配置中，指定 babel 不要去处理它。
 
 ```js
 /**
@@ -28,6 +28,5 @@ core-js 是 es3 的代码，应当是不需要 babel 编译的，但是，因为
  */
 exclude: [
   /node_modules[\\/]core-js/,
-  /node_modules[\\/]react-app-polyfill/,
 ],
 ```
