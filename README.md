@@ -7,7 +7,7 @@ https://blog.eleven.net.cn/
 - 新建文章（指定嵌套的文件夹、文件名及文章标题）
 
   ```bash
-  hexo new "[post_title]" -p [folder_path/file_name.md]
+  npx hexo new "[post_title]" -p [folder_path/file_name.md]
   ```
 
   - post_title  文章标题
@@ -64,7 +64,7 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 ### Create a new post
 
 ``` bash
-$ hexo new "My New Post"
+$ npx hexo new "My New Post"
 ```
 
 More info: [Writing](https://hexo.io/docs/writing.html)
@@ -72,7 +72,7 @@ More info: [Writing](https://hexo.io/docs/writing.html)
 ### Run server
 
 ``` bash
-$ hexo server
+$ npx hexo server
 ```
 
 More info: [Server](https://hexo.io/docs/server.html)
@@ -80,7 +80,7 @@ More info: [Server](https://hexo.io/docs/server.html)
 ### Generate static files
 
 ``` bash
-$ hexo generate
+$ npx hexo generate
 ```
 
 More info: [Generating](https://hexo.io/docs/generating.html)
@@ -88,7 +88,7 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 ### Deploy to remote sites
 
 ``` bash
-$ hexo deploy
+$ npx hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
