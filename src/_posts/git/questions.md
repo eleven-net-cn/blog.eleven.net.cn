@@ -1,5 +1,5 @@
 ---
-title: Git 常见问题
+title: Git 非常规问题记录
 date: 2021-04-07 15:35:52
 category: Git
 tags: [Git]
@@ -7,6 +7,31 @@ cover:
 ---
 
 Git 遇到的各类怪异问题，集中收集。
+
+## 与 fork 的上游仓库保持同步
+
+一般有 3 种办法可用：
+
+1. 命令行同步（安全，推荐）
+
+```zsh
+git remote -v
+# 将上游仓库添加进来
+git remote add upstream git@github.com:xxx/xxx.git
+# 拉取更新
+git fetch upstream
+# 合并过来
+git merge upstream/master
+git push origin master
+```
+
+若干可以注意的地方，如下图：
+
+![](/imgs/git_fetch_fork_repo.png)
+
+2. 借助第三方库：https://github.com/wei/pull  (如果自己有修改，会被覆盖。所以，比较适合仅参与 PR 的项目同步)
+
+3. 借助机器人程序 Backstroke：https://github.com/backstrokeapp/server
 
 ## 提示 hosts 问题
 

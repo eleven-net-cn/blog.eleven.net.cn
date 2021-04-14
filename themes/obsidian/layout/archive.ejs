@@ -8,7 +8,7 @@
                 <div class="content animated fadeIn">
                     <div class="set">
                         <h1 style="text-align: center"><%= theme.page_titles.archives || __("Archived") %></h1>
-                        <p style="text-align: center">「 <%= site.posts.length %> 」</p>
+                        <p style="text-align: center">「发表了 <%= site.posts.length %> 篇文章」</p>
                         <ul class="timeline timeline-centered">
                             <% var posts = site.posts.sort('date', 'desc'); %>
                             <% for(let i = 0, month = -1; i < posts.data.length; ++i) { %>
