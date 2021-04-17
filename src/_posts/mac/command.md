@@ -10,7 +10,7 @@ cover: /imgs/arm_core.jpeg
 
 https://www.macwk.com/article/apple-silicon-m1-application-crash-repair
 
-## nvm 切换 x86/arm 架构终端操作命令
+## nvm 终端切换 x86/arm
 
 ```zsh
 # Check what version you're running:
