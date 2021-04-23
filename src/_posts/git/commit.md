@@ -92,11 +92,11 @@ yarn add gitmoji-cli -D
 git commit -m "fix(src): :bug: 修复列表显示问题"
 ```
     
-如果想要查看所有的表情符号及介绍，可以[去官方文档查阅](https://gitmoji.carloscuesta.me/)，也可以全局安装
+如果想要查看所有的表情符号及介绍，可以[去官方文档查阅](https://gitmoji.carloscuesta.me/)。
 
-`npm i -g gitmoji-cli`
+或者，`npx gitmoji-cli -l` 查看。
 
-执行 `gitmoji -l` 命令在终端查看。
+如果全局安装 `npm i -g gitmoji-cli`，则执行 `gitmoji -l` 命令查看。
     
     
 ## 常见的 commit 类型
