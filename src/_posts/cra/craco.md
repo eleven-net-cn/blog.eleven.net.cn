@@ -518,7 +518,7 @@ craco-antd includes:
     
 最后，放一份完整的 craco.config.js 配置文件，方便参照。
 
-「版本是 webpack v4、create-react-app v4，其它不同的版本，可能需要略加调整。」
+> 版本是 webpack v4、create-react-app v4，其它不同的版本，可能需要略加调整。
 
 ```js
 /**
