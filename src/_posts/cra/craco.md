@@ -6,6 +6,10 @@ tags: create-react-app
 cover: /img/basketball.jpg
 ---
 
+> 内置 craco 扩展配置的 CRA Template，可直接使用。  
+> TS 版本：[@eleven.fe/cra-template-typescript](https://www.npmjs.com/package/@eleven.fe/cra-template-typescript)
+> ES 版本：[@eleven.fe/cra-template](https://www.npmjs.com/package/@eleven.fe/cra-template)  
+
 使用 CRA 脚手架创建的项目，如果想要修改编译配置，通常可能会选择 `npm run eject` 弹出配置后魔改。但是，eject 是不可逆操作，弹出配置后，你将无法跟随官方的脚步去升级项目的 react-scripts 版本。
 
 如果想要无 eject 重写 CRA 配置，一般可以有以下几种方式
@@ -513,6 +517,8 @@ craco-antd includes:
     解决不了的问题，在 configure 函数中配置，并且，推荐 configure 使用函数形式，而非对象形式。虽然，函数形式更复杂了一点，但是二者是互斥的，只好选择其中一种。
     
 最后，放一份完整的 craco.config.js 配置文件，方便参照。
+
+「版本是 webpack v4、create-react-app v4，其它不同的版本，可能需要略加调整。」
 
 ```js
 /**
