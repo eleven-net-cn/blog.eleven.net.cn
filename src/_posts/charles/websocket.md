@@ -19,7 +19,7 @@ Charles 中如何抓包、代理 websockt 请求？过程有些复杂、坑点�
 
 如果还有问题，推荐阅读这篇使用指南 ☞ [传送门](https://blog.csdn.net/mxw2552261/article/details/78645118)。
 
-保证能正常抓到请求，再继续向下去看怎么抓取 websockt。
+保证能正常抓到请求，再继续向下去看怎么抓取 websockt，当前使用的 charles 版本是 v4.6.1。
 
 ## charles 需要开启若干设置
 
