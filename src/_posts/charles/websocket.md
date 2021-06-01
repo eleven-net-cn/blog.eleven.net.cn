@@ -1,12 +1,12 @@
 ---
-title: Charles 抓包/代理 websockt 请求
+title: Charles 抓包/代理 websocket 请求
 date: 2021-05-29 19:13:25
 category: Charles
 tags: websocket
 cover:
 ---
 
-Charles 中如何抓包、代理 websockt 请求？过程有些复杂、坑点颇多，这里提供一份可用的方案。
+Charles 中如何抓包、代理 websocket 请求？过程有些复杂、坑点颇多，这里提供一份可用的方案。
 
 请先确保你的 charles 能够抓到浏览器的请求。
 
@@ -19,7 +19,7 @@ Charles 中如何抓包、代理 websockt 请求？过程有些复杂、坑点�
 
 如果还有问题，推荐阅读这篇使用指南 ☞ [传送门](https://blog.csdn.net/mxw2552261/article/details/78645118)。
 
-保证能正常抓到请求，再继续向下去看怎么抓取 websockt，当前使用的 charles 版本是 v4.6.1。
+保证能正常抓到请求，再继续向下去看怎么抓取 websocket，当前使用的 charles 版本是 v4.6.1。
 
 ## charles 需要开启若干设置
 
@@ -39,6 +39,6 @@ Charles 中如何抓包、代理 websockt 请求？过程有些复杂、坑点�
 
 ![](/imgs/mac_02.png)
 
-SOCKS 代理的端口 8889 是 charles 代理 websockt 的默认端口，一般情况下不要去修改它。
+SOCKS 代理的端口 8889 是 charles 代理 websocket 的默认端口，一般情况下不要去修改它。
 
 以上工作都完成，那么你应该可以愉快地抓取、代理 websockt 请求了。
