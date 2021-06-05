@@ -77,19 +77,17 @@ function command(cmd, options, callback) {
 
 #### 配置 Git 钩子
 
-1. 先安装 `husky`，用于管理 git 钩子，当然，使用原生的也可以。
+1. 先安装 `yorkie`，用于管理 git 钩子，当然，使用原生的也可以。
 
    ```bash
-   yarn add husky -D
+   yarn add yorkie -D
    ```
 
 2. 在项目的 package.json 文件中增加以下配置：
 
    ```json
-   "husky": {
-     "hooks": {
-       "post-commit": "exec < /dev/tty && node scripts/check-version.js"
-     }
+   "gitHooks": {
+     "post-commit": "exec < /dev/tty && node scripts/check-version.js"
    },
    ```
 
