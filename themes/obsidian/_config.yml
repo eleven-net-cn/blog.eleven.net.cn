@@ -81,7 +81,7 @@ post_cover: /img/welcome-cover.jpg
 cover: /img/welcome-cover.jpg
 
 # Avatar
-avatar: /img/abc/eleven.net.cn.jpeg
+avatar: /img/abc/eleven-net-cn.jpeg
 
 # Disable default scrollbar
 scrollbar: false
@@ -97,7 +97,7 @@ descriptionTwo: '劝君莫惜金缕衣，劝君惜取少年时。'
 google_analytics: 'UA-149874671-1'
 
 # Website favicon
-favicon: /img/abc/eleven.net.cn.jpeg
+favicon: /img/abc/eleven-net-cn.jpeg
 # favicon: /img/favicon.png
 
 # rss file
