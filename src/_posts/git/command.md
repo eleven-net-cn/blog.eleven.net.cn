@@ -67,6 +67,9 @@ $ git config --global http.proxy 10.100.10.100:3128
 # 设置 Git 对文件/文件夹大小写敏感
 $ git config core.ignorecase false
 
+# 设置全局 pull rebase
+$ git config --global pull.rebase true
+
 # gitlab ip 变化后
 $ rm -rf ~/.ssh/known_hosts 删除后重新操作即可
 ```
