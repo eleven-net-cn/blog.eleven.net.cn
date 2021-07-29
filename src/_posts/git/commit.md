@@ -78,26 +78,13 @@ tags: [Git]
     
 ![](https://user-gold-cdn.xitu.io/2020/5/12/172086dbf52c646f?w=2016&h=1570&f=png&s=405106)
     
-可以借助 [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)
-    
-安装
-    
-```bash
-yarn add gitmoji-cli -D
-```
-    
-使用方法：在提交时按照约定格式输入表情字符即可（左右两边英文冒号夹着字符，例如bug ☞ `:bug:`），提交后会自动被显示，示例：
+在提交时按照约定格式输入表情字符即可（左右两边英文冒号夹着字符，例如bug ☞ `:bug:`），提交后会自动被显示（而无需安装[gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)等工具），示例：
 
 ```bash
 git commit -m "fix(src): :bug: 修复列表显示问题"
 ```
     
 如果想要查看所有的表情符号及介绍，可以[去官方文档查阅](https://gitmoji.carloscuesta.me/)。
-
-或者，`npx gitmoji-cli -l` 查看。
-
-如果全局安装 `npm i -g gitmoji-cli`，则执行 `gitmoji -l` 命令查看。
-    
     
 ## 常见的 commit 类型
 
