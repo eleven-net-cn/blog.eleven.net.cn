@@ -98,13 +98,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    3.9k
+                    3.7k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    4 mins.
+                    3 mins.
                 </span>
                 
                 
@@ -185,14 +185,9 @@
 </ol>
 <h2 id="在提交中支持表情符号"><a href="#在提交中支持表情符号" class="headerlink" title="在提交中支持表情符号"></a>在提交中支持表情符号</h2><p>如果想要在提交中使用一些表情符号，如下图：</p>
 <p><img src="https://user-gold-cdn.xitu.io/2020/5/12/172086dbf52c646f?w=2016&h=1570&f=png&s=405106" alt=""></p>
-<p>可以借助 <a target="_blank" rel="noopener" href="https://github.com/carloscuesta/gitmoji-cli">gitmoji-cli</a></p>
-<p>安装</p>
-<pre><code class="bash">yarn add gitmoji-cli -D</code></pre>
-<p>使用方法：在提交时按照约定格式输入表情字符即可（左右两边英文冒号夹着字符，例如bug ☞ <code>:bug:</code>），提交后会自动被显示，示例：</p>
+<p>在提交时按照约定格式输入表情字符即可（左右两边英文冒号夹着字符，例如bug ☞ <code>:bug:</code>），提交后会自动被显示（而无需安装<a target="_blank" rel="noopener" href="https://github.com/carloscuesta/gitmoji-cli">gitmoji-cli</a>等工具），示例：</p>
 <pre><code class="bash">git commit -m &quot;fix(src): :bug: 修复列表显示问题&quot;</code></pre>
 <p>如果想要查看所有的表情符号及介绍，可以<a target="_blank" rel="noopener" href="https://gitmoji.carloscuesta.me/">去官方文档查阅</a>。</p>
-<p>或者，<code>npx gitmoji-cli -l</code> 查看。</p>
-<p>如果全局安装 <code>npm i -g gitmoji-cli</code>，则执行 <code>gitmoji -l</code> 命令查看。</p>
 <h2 id="常见的-commit-类型"><a href="#常见的-commit-类型" class="headerlink" title="常见的 commit 类型"></a>常见的 commit 类型</h2><ul>
 <li>feat: 新增feature</li>
 <li>fix: 修复bug</li>
