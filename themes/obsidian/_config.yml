@@ -41,6 +41,7 @@ version: '1.4.5'
 
 # Menu setting | format = title_name: link_url
 menu:
+  GitHub: 'https://github.com/eleven-net-cn'
   FE-Ground: https://fe-ground.eleven.net.cn/
   效率工具: 
     library-starter: https://github.com/eleven-net-cn/library-starter
@@ -50,7 +51,6 @@ menu:
     '@eleven.fe/reset.css': https://www.npmjs.com/package/@eleven.fe/reset.css
     '@eleven.fe/ball-collision': https://www.npmjs.com/package/@eleven.fe/ball-collision
   Webpack专题: 'https://webpack.eleven.net.cn/'
-  GitHub: 'https://github.com/eleven-net-cn'
   时光轴: /archives
 
 # Page custom titles
@@ -90,8 +90,8 @@ scrollbar: false
 keywords: Eleven,前端
 
 # Website slogans
-descriptionOne: '人生没有重启键，一去不回头。'
-descriptionTwo: '劝君莫惜金缕衣，劝君惜取少年时。'
+# descriptionOne: '人生没有重启键，一去不回头。'
+# descriptionTwo: '劝君莫惜金缕衣，劝君惜取少年时。'
 
 # If you use google analytics, please fill in the ID
 google_analytics: 'UA-149874671-1'
