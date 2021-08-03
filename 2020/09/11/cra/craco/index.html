@@ -991,8 +991,8 @@ module.exports = &#123;
                             <span>eleven-net-cn</span>
                         </a>
                     </div>
-                    <p>人生没有重启键，一去不回头。</p>
-                    <!-- <span>人生没有重启键，一去不回头。</span> -->
+                    <p></p>
+                    <!-- <span></span> -->
                     <!-- <dl>
                         <dd><a href="https://github.com/eleven-net-cn" target="_blank"><span
                                     class=" iconfont icon-github"></span></a></dd>
@@ -1217,11 +1217,14 @@ module.exports = &#123;
  
 
 <script>
+  /**
+   * 打字效果
+   */
   function initialTyped() {
     var typedTextEl = $('.typed-text');
     if (typedTextEl && typedTextEl.length > 0) {
       var typed = new Typed('.typed-text', {
-        strings: ['人生没有重启键，一去不回头。', '劝君莫惜金缕衣，劝君惜取少年时。'],
+        strings: ['', ''],
         typeSpeed: 90,
         loop: true,
         loopCount: Infinity,
@@ -1232,6 +1235,7 @@ module.exports = &#123;
 
   if ($('.article-header') && $('.article-header').length) {
     $(document).ready(function () {
+      // 初始化打字机
       initialTyped();
     });
   }
