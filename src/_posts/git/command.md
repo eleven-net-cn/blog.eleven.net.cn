@@ -10,6 +10,8 @@ Git 常用命令做一波整理，方便随时查阅。
 
 > 主要内容出自阮一峰大佬的科普文章：http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html 。
 
+![](https://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png)
+
 几个专用名词的译名如下：
 
 - Workspace：工作区
