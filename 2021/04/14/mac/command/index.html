@@ -11,7 +11,7 @@
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Eleven,前端,"> 
     <meta name="description" content="使用 Rosetta 打开https://www.macwk.com/article/apple-silicon-m1-application-crash-repair
-nvm 终端切换 x86/a,"> 
+M1 Mac nvm 安装/,"> 
     <meta name="author" content="eleven-net-cn"> 
     <link rel="alternative" href="atom.xml" title="Eleven 的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/abc/eleven-net-cn.jpeg"> 
@@ -97,13 +97,13 @@ nvm 终端切换 x86/a,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    1.3k
+                    2.5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    1 mins.
+                    2 mins.
                 </span>
                 
                 
@@ -137,7 +137,35 @@ nvm 终端切换 x86/a,">
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <h2 id="使用-Rosetta-打开"><a href="#使用-Rosetta-打开" class="headerlink" title="使用 Rosetta 打开"></a>使用 Rosetta 打开</h2><p><a target="_blank" rel="noopener" href="https://www.macwk.com/article/apple-silicon-m1-application-crash-repair">https://www.macwk.com/article/apple-silicon-m1-application-crash-repair</a></p>
-<h2 id="nvm-终端切换-x86-arm"><a href="#nvm-终端切换-x86-arm" class="headerlink" title="nvm 终端切换 x86/arm"></a>nvm 终端切换 x86/arm</h2><pre><code class="zsh"># Check what version you&#39;re running:
+<h2 id="M1-Mac-nvm-安装-升级-卸载"><a href="#M1-Mac-nvm-安装-升级-卸载" class="headerlink" title="M1 Mac nvm 安装/升级/卸载"></a>M1 Mac nvm 安装/升级/卸载</h2><blockquote>
+<p>最好能够翻墙，并且设置终端可翻墙，否则速度太慢可能断掉。</p>
+</blockquote>
+<ol>
+<li><p>安装</p>
+<p>对于 M1 芯片的 Mac，低版本的 nvm 使用存在一些奇怪的问题，需要卸载后重装最新版本。</p>
+<pre><code class="zsh">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</code></pre>
+<p>安装完成后，修改 zsh 终端配置，打开配置文件：</p>
+<pre><code class="zsh">open ~/.zshrc</code></pre>
+<p>在配置文件尾部，添加如下代码：</p>
+<pre><code class="zsh">export NVM_DIR=&quot;$HOME/.nvm&quot;
+[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm
+[ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot;  # This loads nvm bash_completion</code></pre>
+<p>保存后关闭，并在终端运行下发命令，让配置生效。</p>
+<pre><code class="zsh">source ~/.zshrc</code></pre>
+<p>安装工作结束！</p>
+</li>
+<li><p>升级</p>
+<p>切换到 nvm 安装目录</p>
+<pre><code class="zsh">cd ~/.nvm</code></pre>
+<p>直接操作拉取最新代码即可</p>
+<pre><code class="zsh">git fetch</code></pre>
+</li>
+<li><p>卸载</p>
+<p>移除 .nvm 目录即可，通常位置在 <code>~/.nvm</code></p>
+<pre><code class="zsh">rm -rf ~/.nvm</code></pre>
+</li>
+</ol>
+<h2 id="M1-Mac-nvm-终端切换-x86-arm"><a href="#M1-Mac-nvm-终端切换-x86-arm" class="headerlink" title="M1 Mac nvm 终端切换 x86/arm"></a>M1 Mac nvm 终端切换 x86/arm</h2><pre><code class="zsh"># Check what version you&#39;re running:
 $ node --version
 v14.15.4
 # Check architecture of the `node` binary:
@@ -241,7 +269,7 @@ Now using node v14.15.4 (npm v6.14.10)</code></pre>
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Rosetta-%E6%89%93%E5%BC%80"><span class="toc-number">1.</span> <span class="toc-text">使用 Rosetta 打开</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nvm-%E7%BB%88%E7%AB%AF%E5%88%87%E6%8D%A2-x86-arm"><span class="toc-number">2.</span> <span class="toc-text">nvm 终端切换 x86&#x2F;arm</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Rosetta-%E6%89%93%E5%BC%80"><span class="toc-number">1.</span> <span class="toc-text">使用 Rosetta 打开</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#M1-Mac-nvm-%E5%AE%89%E8%A3%85-%E5%8D%87%E7%BA%A7-%E5%8D%B8%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">M1 Mac nvm 安装&#x2F;升级&#x2F;卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#M1-Mac-nvm-%E7%BB%88%E7%AB%AF%E5%88%87%E6%8D%A2-x86-arm"><span class="toc-number">3.</span> <span class="toc-text">M1 Mac nvm 终端切换 x86&#x2F;arm</span></a></li></ol>
                 </div>
             </div>
             
@@ -260,7 +288,7 @@ Now using node v14.15.4 (npm v6.14.10)</code></pre>
 </body>
 <footer>
     <p class="copyright gradient-text" id="copyright">
-        &copy;&nbsp;2020&nbsp;-&nbsp;2021
+        &copy;&nbsp;2020&nbsp;-&nbsp;2022
         <span>
             eleven-net-cn
         </span>
