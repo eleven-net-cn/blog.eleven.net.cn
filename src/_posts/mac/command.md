@@ -66,6 +66,8 @@ https://www.macwk.com/article/apple-silicon-m1-application-crash-repair
    rm -rf ~/.nvm
    ```
 
+参考文章：https://blog.csdn.net/longgege001/article/details/114067242
+
 ## M1 Mac nvm 终端切换 x86/arm
 
 ```zsh
