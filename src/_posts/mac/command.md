@@ -10,7 +10,63 @@ cover: /imgs/arm_core.jpeg
 
 https://www.macwk.com/article/apple-silicon-m1-application-crash-repair
 
-## nvm 终端切换 x86/arm
+## M1 Mac nvm 安装/升级/卸载
+
+> 最好能够翻墙，并且设置终端可翻墙，否则速度太慢可能断掉。
+
+1. 安装
+
+   对于 M1 芯片的 Mac，低版本的 nvm 使用存在一些奇怪的问题，需要卸载后重装最新版本。
+
+   ```zsh
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+   ```
+
+   安装完成后，修改 zsh 终端配置，打开配置文件：
+
+   ```zsh
+   open ~/.zshrc
+   ```
+
+   在配置文件尾部，添加如下代码：
+
+   ```zsh
+   export NVM_DIR="$HOME/.nvm"
+   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+   ```
+
+   保存后关闭，并在终端运行下发命令，让配置生效。
+
+   ```zsh
+   source ~/.zshrc
+   ```
+
+   安装工作结束！
+
+2. 升级
+
+   切换到 nvm 安装目录
+
+   ```zsh
+   cd ~/.nvm
+   ```
+
+   直接操作拉取最新代码即可
+
+   ```zsh
+   git fetch
+   ```
+
+3. 卸载
+
+   移除 .nvm 目录即可，通常位置在 `~/.nvm`
+
+   ```zsh
+   rm -rf ~/.nvm
+   ```
+
+## M1 Mac nvm 终端切换 x86/arm
 
 ```zsh
 # Check what version you're running:
