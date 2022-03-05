@@ -3,7 +3,7 @@ title: vscode 调试技巧
 date: 2022-02-23 14:34:15
 category: VSCode
 tags: [调试，vscode， nodejs]
-cover: 
+cover:
 ---
 
 Web 开发中，大多数人都会习惯在浏览器端调试代码，而借助 vscode，可以带来不一样的调试体验，试想在代码编写处，直接打一个断点，实时 debugger，体验是不是更顺畅了一点？
@@ -133,6 +133,19 @@ attach 模式不会自动拉起 chrome，可以自己选择访问，相比 launc
 ## 备注
 
 1. 如果应用中同时配置了多个调试模式，建议通过点击“运行和调试”，先选择启动模式，再去启动调试。
+
+2. launch.json 参数
+
+- `name` - 当前调试配置项的名称，可读性要好，区分每个调试配置项
+- `type` - 用于此启动配置的调试器的类型。每个已安装的调试扩展都引入一种类型：例如 node，php，go 等。
+- `request` - 当前调试项的类型，目前支持 launch 和 attach 两种类型。launch 适合调试未启动的程序，attach 则适合调试已经运行的程序。
+- `program `- 启动调试器时要运行的可执行程序或文件
+- `args`- 传递给程序进行调试的参数
+- `env` - 调试时的环境变量
+- `envFile` - 包含环境变量键值对的文件
+- `stopOnEntry` - 程序启动时立即中断
+- `port` - 连接到正在运行的调试器的端口
+- `runtimeExecutable` - 启用调试的可执行 Runtime，默认是 Node
 
 ## 参考文档
 
