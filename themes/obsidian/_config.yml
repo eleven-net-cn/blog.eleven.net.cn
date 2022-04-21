@@ -62,8 +62,10 @@ page_titles:
 # Social media links
 socials:
   github: 'https://github.com/eleven-net-cn'
-  # twitter: 'https://twitter.com/TriDiamond6'
+  twitter: 'https://twitter.com/TriDiamond6'
   # stackoverflow: 'https://stackoverflow.com/users/7602324/tridiamond?tab=profile'
+
+icp: 沪 ICP 备 2022012323 号
 
 # Enable table of content
 TOC: true
