@@ -2,7 +2,7 @@
 
 https://blog.eleven.net.cn/
 
-## 运行命令
+## Command
 
 - 新建文章（指定嵌套的文件夹、文件名及文章标题）
 
@@ -10,9 +10,9 @@ https://blog.eleven.net.cn/
   npx hexo new "[post_title]" -p [folder_path/file_name.md]
   ```
 
-  - post_title  文章标题
+  - post_title 文章标题
   - folder_path 文章所在文件夹
-  - file_name   文章文件名
+  - file_name 文章文件名
 
 - 本地调试
 
@@ -34,7 +34,7 @@ https://blog.eleven.net.cn/
   yarn deploy   # 部署（到 github pages）
   ```
 
-## 目录
+## Contents
 
 ```bash
 blog
@@ -48,7 +48,7 @@ blog
   ├── themes/             # 主题
   │
   ├── _config.yml         # hexo 基础配置
-  ├── .gitignore 
+  ├── .gitignore
   ├── db.json
   ├── package.json
   ├── README.md
@@ -63,7 +63,7 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 ### Create a new post
 
-``` bash
+```bash
 $ npx hexo new "My New Post"
 ```
 
@@ -71,7 +71,7 @@ More info: [Writing](https://hexo.io/docs/writing.html)
 
 ### Run server
 
-``` bash
+```bash
 $ npx hexo server
 ```
 
@@ -79,7 +79,7 @@ More info: [Server](https://hexo.io/docs/server.html)
 
 ### Generate static files
 
-``` bash
+```bash
 $ npx hexo generate
 ```
 
@@ -87,7 +87,7 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 
 ### Deploy to remote sites
 
-``` bash
+```bash
 $ npx hexo deploy
 ```
 
