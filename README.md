@@ -23,7 +23,7 @@ https://blog.eleven.net.cn/
 - 部署发布
 
   ```bash
-  yarn release
+  yarn release  # 编译 & 部署
   ```
 
 - 其它
