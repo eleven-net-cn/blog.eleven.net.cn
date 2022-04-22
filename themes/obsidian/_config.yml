@@ -118,6 +118,13 @@ autoplay: true
 # default mp3 file
 mp3:
   - statics/平凡之路.mp3
+  - statics/出埃及记.mp3
+  - statics/天地孤影任我行.mp3
+  - statics/英雄的黎明.mp3
+  - statics/市集.mp3
+  - statics/知音.mp3
+  - statics/Beautiful In White.mp3
+  - statics/chengdu.mp3
 
 # ---------------------------------------------------------------
 # Plugins

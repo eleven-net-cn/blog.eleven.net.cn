@@ -90,7 +90,9 @@ function buildImgCaption() {
 var Home = location.href,
   Pages = 4,
   xhr,
-  xhrUrl = '';
+  xhrUrl = '',
+  // 当前播放曲目的下标
+  currentIndex;
 
 var Obsidian = {
   L: function (url, f, err) {
@@ -132,7 +134,7 @@ var Obsidian = {
         t: document.title,
       },
       document.title,
-      Home
+      Home,
     );
     window.addEventListener('popstate', function (e) {
       var state = e.state;
@@ -224,7 +226,7 @@ var Obsidian = {
           $('#container').show();
         }
         Obsidian.loaded();
-      }
+      },
     );
     setTimeout(function () {
       $('#preview').addClass('show');
@@ -240,8 +242,10 @@ var Obsidian = {
     }, 0);
   },
   player: function () {
-    var p = $('#audio');
-    if (!p.length) {
+    var $audio = $('#audio');
+    var $audiolist = $('#audio-list li');
+
+    if (!$audio.length) {
       $('.icon-play').css({
         color: '#dedede',
         cursor: 'not-allowed',
@@ -249,28 +253,39 @@ var Obsidian = {
       return;
     }
     var sourceSrc = $('#audio source').eq(0).attr('src');
-    if (sourceSrc == '' && p[0].src == '') {
-      audiolist = $('#audio-list li');
-      mp3 = audiolist.eq([Math.floor(Math.random() * audiolist.length)]);
-      p[0].src = mp3.data('url');
+    if (sourceSrc == '' && $audio[0].src == '') {
+      currentIndex = Math.floor(Math.random() * $audiolist.length);
+      var mp3 = $audiolist.eq(currentIndex);
+      $audio[0].src = mp3.data('url');
     }
 
-    if (p.eq(0).data('autoplay') == true) {
-      p[0].play();
+    if ($audio.eq(0).data('autoplay') == true) {
+      $audio[0].play();
     }
 
-    p.on({
+    $audio.on({
       timeupdate: function () {
-        var progress = (p[0].currentTime / p[0].duration) * 100;
+        var progress = ($audio[0].currentTime / $audio[0].duration) * 100;
+
         $('.bar').css('width', progress + '%');
+
+        if ($('#play-icon').hasClass('icon-play')) {
+          // $('#play-icon').removeClass('icon-play').addClass('icon-pause');
+        }
+
         if (progress / 5 <= 1) {
-          p[0].volume = progress / 5;
+          $audio[0].volume = progress / 5;
         } else {
-          p[0].volume = 1;
+          $audio[0].volume = 1;
         }
       },
       ended: function () {
+        var nextIndex = currentIndex >= $audiolist.length - 1 ? 0 : currentIndex + 1;
+        currentIndex = nextIndex;
+
         $('.icon-pause').removeClass('icon-pause').addClass('icon-play');
+        $audio[0].src = $audiolist.eq(nextIndex).data('url');
+        $audio[0].play();
       },
       playing: function () {
         $('.icon-play').removeClass('icon-play').addClass('icon-pause');
@@ -480,7 +495,7 @@ var Obsidian = {
                 lang +
                 '> <b class="iconfont icon-code" style="line-height: 0.7rem"></b> ' +
                 displayLangText +
-                '</span>'
+                '</span>',
             );
         }
       });
@@ -949,7 +964,7 @@ $(function () {
           header.style.background = 'transparent';
           header.style.borderBottom = '0px';
           header.style.boxShadow = 'none';
-          if (!(logoImg && logoImg.classList.contains('spin'))) {
+          if (logoImg && !logoImg.classList.contains('spin')) {
             logoImg.classList.add('spin');
             setTimeout(function () {
               logoImg.classList.remove('spin');
@@ -1057,7 +1072,7 @@ $(function () {
           {
             scrollTop: 0,
           },
-          300
+          300,
         );
         break;
       // nav menu
@@ -1104,10 +1119,10 @@ $(function () {
               {
                 scrollTop: tempScrollTop + 400,
               },
-              500
+              500,
             );
-            document.querySelectorAll('pre code').forEach(block => {
-              if(typeof hljs !== 'undefined') hljs.highlightBlock(block);
+            document.querySelectorAll('pre code').forEach((block) => {
+              if (typeof hljs !== 'undefined') hljs.highlightBlock(block);
             });
             Obsidian.setCodeRowWithLang();
             // if ($('#vcomments').length) {
@@ -1117,7 +1132,7 @@ $(function () {
           },
           function () {
             tag.html(tag.attr('data-load-more')).data('status', 'loaded');
-          }
+          },
         );
         return false;
       // home
@@ -1155,6 +1170,15 @@ $(function () {
         $('.icon-pause').removeClass('icon-pause').addClass('icon-play');
         return false;
       // history state
+      case tag.indexOf('icon-next') !== -1:
+        var $audio = $('#audio');
+        var $audiolist = $('#audio-list li');
+        var nextIndex = currentIndex >= $audiolist.length - 1 ? 0 : currentIndex + 1;
+        currentIndex = nextIndex;
+
+        $audio[0].src = $audiolist.eq(nextIndex).data('url');
+        $audio[0].play();
+        return false;
       case tag.indexOf('posttitle') != -1:
         $('body').removeClass('fixed');
         Obsidian.HS($(e.target), 'push');
@@ -1186,12 +1210,14 @@ $(function () {
         } else {
           hash = $(e.target).attr('href');
         }
-        to = $('.content :header').find('[href="' + hash + '"],[href="' + decodeURIComponent(hash) + '"]');
+        to = $('.content :header').find(
+          '[href="' + hash + '"],[href="' + decodeURIComponent(hash) + '"]',
+        );
         $('html,body').animate(
           {
             scrollTop: to.offset().top - 80,
           },
-          300
+          300,
         );
         return false;
       // quick view
@@ -1318,7 +1344,7 @@ $(function () {
   });
 
   // 全局唤起搜索
-  $(document).on('keydown', function(event) {
+  $(document).on('keydown', function (event) {
     // ctrl + K 或 meta + K
     var validShowSearchBox = event.keyCode === 75 && (event.ctrlKey || event.metaKey);
     var validEsc = event.keyCode === 27;
@@ -1330,7 +1356,7 @@ $(function () {
     var isHiddenContainer = $container.is(':hidden');
 
     // 唤起搜索
-    if(validShowSearchBox && $inputSearch.length && $container.length && !isHiddenContainer) {
+    if (validShowSearchBox && $inputSearch.length && $container.length && !isHiddenContainer) {
       if ($searchBoxDisplay != 'block') {
         $('#container').show();
         $('body').addClass('fixed');
@@ -1341,11 +1367,11 @@ $(function () {
     }
 
     // 关闭搜索
-    if(validEsc) {
+    if (validEsc) {
       $('body').removeClass('fixed');
       $searchBox.fadeOut(400);
     }
-  })
+  });
 
   // 是否自动展开评论
   comment = $('#gitalk-container');
@@ -1375,6 +1401,6 @@ $(function () {
     '%c GitHub %c',
     'background:#24272A; color:#73ddd7',
     '',
-    'eleven-net-cn: https://github.com/eleven-net-cn'
+    'eleven-net-cn: https://github.com/eleven-net-cn',
   );
 });
