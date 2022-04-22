@@ -145,5 +145,7 @@ attach 模式不会自动拉起 chrome，可以自己选择访问，相比 launc
 
 ## 参考文档
 
+更多强悍的调试能力，推荐阅读下方文档了解。
+
 1. [这几个 JavaScript 断点调试技能你有必要掌握！](https://mp.weixin.qq.com/s/9gERuxNiJaWYUeie910ALA)
 2. [Node.js 深度调试指南](https://juejin.cn/post/6844904199805730823#heading-0)
