@@ -619,7 +619,8 @@ body.touch .article {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.icon-play {
+.icon-play,
+.icon-next {
   position: absolute;
   left: 70px;
   top: 10px;
@@ -635,6 +636,13 @@ body.touch .article {
   transition: display 400ms ease-in-out;
   animation-delay: 800ms;
   animation-duration: 1.2s;
+}
+.icon-next.next {
+  left: 100px;
+}
+.icon-next.next:active {
+  top: 11px;
+  left: 101px;
 }
 .icon-pause {
   position: absolute;
@@ -3523,14 +3531,8 @@ pre .keyword {
   .icon-images {
     left: 80px;
   }
-  .icon-pause {
-    left: 50px;
-  }
   .icon-home {
     left: 15px;
-  }
-  .icon-play {
-    display: none;
   }
   .comment.link {
     width: 140px;
