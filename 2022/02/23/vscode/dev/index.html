@@ -97,7 +97,7 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    4.6k
+                    4.5k
                 </span>
                 
                 
@@ -168,10 +168,7 @@
 <p>命令行启动时，如果 chrome 已经在运行，需要 command + Q 先退出。</p>
 </blockquote>
 <pre><code class="Bash">/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222</code></pre>
-<p>启动成功如下图：</p>
-<p><img src="https://secure2.wostatic.cn/static/nk9F5eqwcRjTMKueAJkLj3/image.png" alt=""></p>
-<p>若未退出已有的 chrome，直接启动会失败，需要先退出再启动，如下图：</p>
-<p><img src="https://secure2.wostatic.cn/static/kqKnn5saQ96LEWz3b4tXfU/image.png" alt=""></p>
+<p>若未退出已有的 chrome，直接启动会失败，需要先退出再启动。</p>
 <p>2、项目中添加调试配置</p>
 <p>操作“运行 - 添加配置”，下拉选择 chrome 自动添加即可，根据需要修改参数值</p>
 <p>示例如下：</p>
@@ -213,7 +210,9 @@
       &quot;console&quot;: &quot;integratedTerminal&quot;,
       &quot;skipFiles&quot;: [&quot;&lt;node_internals&gt;/**&quot;],
       // 运行当前文件开始调试
-      &quot;program&quot;: &quot;$&#123;file&#125;&quot;
+      &quot;program&quot;: &quot;$&#123;file&#125;&quot;,
+      // 指定某个入口文件开始调试
+      // &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/src/index.js&quot;
     &#125;
   ]
 &#125;</code></pre>
