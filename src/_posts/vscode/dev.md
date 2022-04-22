@@ -58,13 +58,7 @@ attach 模式不会自动拉起 chrome，可以自己选择访问，相比 launc
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
 ```
 
-启动成功如下图：
-
-![](https://secure2.wostatic.cn/static/nk9F5eqwcRjTMKueAJkLj3/image.png)
-
-若未退出已有的 chrome，直接启动会失败，需要先退出再启动，如下图：
-
-![](https://secure2.wostatic.cn/static/kqKnn5saQ96LEWz3b4tXfU/image.png)
+若未退出已有的 chrome，直接启动会失败，需要先退出再启动。
 
 2、项目中添加调试配置
 
@@ -122,7 +116,9 @@ attach 模式不会自动拉起 chrome，可以自己选择访问，相比 launc
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"],
       // 运行当前文件开始调试
-      "program": "${file}"
+      "program": "${file}",
+      // 指定某个入口文件开始调试
+      // "program": "${workspaceFolder}/src/index.js"
     }
   ]
 }
@@ -148,6 +144,8 @@ attach 模式不会自动拉起 chrome，可以自己选择访问，相比 launc
 - `runtimeExecutable` - 启用调试的可执行 Runtime，默认是 Node
 
 ## 参考文档
+
+更多强悍的调试能力，推荐阅读下方文档了解。
 
 1. [这几个 JavaScript 断点调试技能你有必要掌握！](https://mp.weixin.qq.com/s/9gERuxNiJaWYUeie910ALA)
 2. [Node.js 深度调试指南](https://juejin.cn/post/6844904199805730823#heading-0)
