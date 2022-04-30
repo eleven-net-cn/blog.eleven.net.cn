@@ -43,7 +43,7 @@ $ git config --list
 # 编辑 Git 配置文件
 $ git config -e [--global]
 
-# 设置提交代码时的用户信息(设置本机的用户名,邮箱)
+# 设置提交代码时的用户信息(设置本机的用户名，邮箱)
 $ git config [--global] user.name "[name]"
 $ git config [--global] user.email "[email address]"
 
@@ -129,7 +129,7 @@ $ git commit --amend [file1] [file2] ...
 ## 五、分支
 
 ```zsh
-# 有时候看不到远程的分支,那么更新下远程库的索引
+# 有时候看不到远程的分支，那么更新下远程库的索引
 $ git fetch
 
 # 列出所有本地分支
@@ -147,7 +147,7 @@ $ git branch [branch-name]
 # 新建一个分支，并切换到该分支
 $ git checkout -b [branch]
 
-# 拉取一个本地不存在的新分支,并切换到该分支
+# 拉取一个本地不存在的新分支，并切换到该分支
 $ git checkout -b [branch-name] [origin/branch-name]
 
 # 新建一个分支，指向指定 commit
@@ -174,7 +174,7 @@ $ git cherry-pick [commit]
 # 删除分支
 $ git branch -d [branch-name]
 
-# 删除分支(如果要删除的分支,本地仓库有代码没有 push 到远程仓库,-d 是删不掉的,需要用-D; 切回去先 push 再删也行.)
+# 删除分支(如果要删除的分支，本地仓库有代码没有 push 到远程仓库，-d 是删不掉的，需要用-D; 切回去先 push 再删也行.)
 $ git branch -D [branch-name]
 
 # 批量删除本地分支（排除 master/develop/test 分支）
@@ -208,6 +208,14 @@ $ git diff [分支 A] [分支 B] >> xx.txt （比较两个分支不同，输出�
 ```
 
 ## 六、标签
+
+tag 对应某次 commit 节点，是一个点，是不可移动的。
+
+branch 对应一系列 commit，是很多点连成的一根线，有一个 HEAD 指针，可以依靠 HEAD 指针移动。
+
+两者的区别决定了使用方式，改动代码用 branch ，不改动只查看用 tag。
+
+> tag 和 branch 的相互配合使用，有时候起到非常方便的效果，例如：已经发布了 v1.0、v2.0、v3.0 三个版本，这个时候，我突然想不改现有代码的前提下，在 v2.0 的基础上加个新功能，作为 v4.0 发布。就可以检出 v2.0 的代码作为一个 branch ，然后作为开发分支。
 
 ```zsh
 # 列出所有 tag
@@ -333,7 +341,7 @@ $ git remote add [shortname] [url]
 # 删除一个远程仓库
 $ git remote rm [shortname]
 
-# 远程仓库更名后,修改连接地址
+# 远程仓库更名后，修改连接地址
 $ git remote set-url [shortname] [new-url]
 
 # 取回远程仓库的变化，并与本地分支合并
@@ -342,7 +350,7 @@ $ git pull [remote] [branch]
 # 上传本地指定分支到远程仓库
 $ git push [remote] [branch]
 
-# 推送分支到远程仓库(第一次需要-u,建立关系)
+# 推送分支到远程仓库(第一次需要-u，建立关系)
 $ git push -u [remote] [branch]
 
 # 强行推送当前分支到远程仓库，即使有冲突
@@ -415,13 +423,13 @@ stash 可用于临时解决 bug 时，将眼前的工作隐藏；随后切换到
 # 暂时将未提交的变化移除(隐藏工作现场)
 $ git stash
 
-# 将移除的移入(恢复工作现场),同时之前 stash 的内容也即删除了(不想删除,请用 apply 命令)
+# 将移除的移入(恢复工作现场)，同时之前 stash 的内容也即删除了(不想删除，请用 apply 命令)
 $ git stash pop
 
 # 查看所有隐藏的工作现场
 $ git stash list
 
-# 恢复 XX,同时把 stash 内容删除
+# 恢复 XX，同时把 stash 内容删除
 $ git stash pop XX
 
 # 恢复 xx 但 stash 内容不删除
@@ -437,9 +445,9 @@ $ git stash drop XX
 # 生成一个可供发布的压缩包
 $ git archive
 
-# 停止追踪某文件,并保留在本地
+# 停止追踪某文件，并保留在本地
 $ git rm --cached XXXX
 
-# 停止追踪某文件,并删除本地文件
+# 停止追踪某文件，并删除本地文件
 $ git rm --f XXXX
 ```
