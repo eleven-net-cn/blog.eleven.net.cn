@@ -130,7 +130,7 @@ attach 模式不会自动拉起 chrome，可以自己选择访问，相比 launc
 
 1. 如果应用中同时配置了多个调试模式，建议通过点击“运行和调试”，先选择启动模式，再去启动调试。
 
-2. launch.json 参数
+2. launch.json 参数（https://code.visualstudio.com/docs/editor/debugging#_launch-configurations）
 
 - `name` - 当前调试配置项的名称，可读性要好，区分每个调试配置项
 - `type` - 用于此启动配置的调试器的类型。每个已安装的调试扩展都引入一种类型：例如 node，php，go 等。
@@ -142,6 +142,13 @@ attach 模式不会自动拉起 chrome，可以自己选择访问，相比 launc
 - `stopOnEntry` - 程序启动时立即中断
 - `port` - 连接到正在运行的调试器的端口
 - `runtimeExecutable` - 启用调试的可执行 Runtime，默认是 Node
+- `` - 启动前执行的命令
+
+    例如，启动前执行 `npm run build`，配置参照下方：
+ 
+    ```json
+    "preLaunchTask": "npm: build",
+    ```
 
 ## 参考文档
 
