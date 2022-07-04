@@ -50,6 +50,10 @@ Web 开发中，大多数人都会习惯在浏览器端调试代码，而借助 
 
 attach 模式不会自动拉起 chrome，可以自己选择访问，相比 launch 模式而言，自由度更高一点，并且已安装的浏览器插件可以使用（launch 模式不能）。
 
+Chrome 浏览器若已启动，必须先退出，按以下方式启动，才能保证 vscode 调试正常连接。
+
+具体操作步骤如下：
+
 1、通过终端启动 chrome，指定 vscode 和 chrome 调试连接的端口（`--remote-debugging-port`），与下方配置中的 `port` 保持一致。
 
 > 命令行启动时，如果 chrome 已经在运行，需要 command + Q 先退出。
