@@ -32,6 +32,8 @@ GitHub：https://github.com/sverweij/dependency-cruiser
 
 推荐最简单的查看方式，安装 VS Code 插件 ☞ Dependency Cruiser Extension
 
+![](/imgs/dependency_cruiser_vscode_plugin.png)
+
 安装好插件后，在 vscode 中目标项目目录上，点击右键 - “View Dependencies”，即可自动生成相关依赖分析图，示例如下。
 
 ### 更多方式
@@ -86,6 +88,8 @@ GitHub：https://github.com/sverweij/dependency-cruiser
    npx -p dependency-cruiser depcruise --init
    ```
 
+   ![](/imgs/dependency_cruiser_init.gif)
+
    会在根目录下生成 .dependency-cruiser.js 配置文件
 
 2. 在项目中安装依赖
@@ -118,6 +122,8 @@ GitHub：https://github.com/sverweij/dependency-cruiser
    添加命令 lint，随时运行校验。
 
    推荐加入到 Git Hooks 中，例如：放到 pre-commit 阶段执行校验，未通过禁止提交代码。
+
+   ![](/imgs/dependency_cruiser_lint.png)
 
    这里为了方便演示，Git Hooks 用的 yorkie，若使用 husky 则更换对应配置。
 
