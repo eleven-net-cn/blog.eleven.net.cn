@@ -321,6 +321,10 @@ $ git show [commit]:[filename]
 
 # 显示当前分支的最近几次提交
 $ git reflog
+
+# 获取提交的 commit id
+$ git rev-parse HEAD    # 获取最近一次提交的 commit id
+$ git rev-parse --short HEAD    # 获取最近一次提交的 commit id，前 7 位
 ```
 
 ## 八、远程同步
