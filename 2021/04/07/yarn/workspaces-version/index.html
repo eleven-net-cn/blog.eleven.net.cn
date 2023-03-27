@@ -104,7 +104,7 @@ Failed to install dependencies in workspace: expected,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    436
+                    551
                 </span>
                 
                 
@@ -146,7 +146,9 @@ Failed to install dependencies in workspace: expected,">
             <p>yarn workspaces 结构的项目，在执行命令安装子包依赖时，可能会看到如下错误：</p>
 <pre><code class="zsh">Failed to install dependencies in workspace: expected workspace package to exist</code></pre>
 <p>yarn issues 下的相关问题讨论：<a target="_blank" rel="noopener" href="https://github.com/yarnpkg/yarn/issues/7807">https://github.com/yarnpkg/yarn/issues/7807</a></p>
-<p>目前比较简单的处理办法是降级 yarn 到 v1.18.0</p>
+<p>目前比较简单的处理办法是使用 <code>npx yarn@1.19.1</code>，</p>
+<pre><code class="zsh">npx yarn@1.19.1 workspace xxx add xxx</code></pre>
+<p>或降级 yarn 到 v1.18.0</p>
 <pre><code class="zsh">yarn policies set-version 1.18.0</code></pre>
 <p>后续还需要等待 yarn 官方来解决此问题。</p>
 
@@ -267,7 +269,7 @@ Failed to install dependencies in workspace: expected,">
 </body>
 <footer>
     <p class="copyright gradient-text" id="copyright">
-        &copy;&nbsp;2020&nbsp;-&nbsp;2022
+        &copy;&nbsp;2020&nbsp;-&nbsp;2023
         <span>
             eleven-net-cn
         </span>
