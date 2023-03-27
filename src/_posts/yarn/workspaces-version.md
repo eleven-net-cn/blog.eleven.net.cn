@@ -13,7 +13,13 @@ Failed to install dependencies in workspace: expected workspace package to exist
 
 yarn issues 下的相关问题讨论：https://github.com/yarnpkg/yarn/issues/7807
 
-目前比较简单的处理办法是降级 yarn 到 v1.18.0
+目前比较简单的处理办法是使用 `npx yarn@1.19.1`，
+
+```zsh
+npx yarn@1.19.1 workspace xxx add xxx
+```
+
+或降级 yarn 到 v1.18.0
 
 ```zsh
 yarn policies set-version 1.18.0
