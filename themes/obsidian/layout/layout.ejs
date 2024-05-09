@@ -1,0 +1,37 @@
+<%- partial('_partial/head') %>
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none"><%= config.title %></span>
+    <div id="loader"></div>
+    <%- body %>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright gradient-text" id="copyright">
+        &copy;&nbsp;2020&nbsp;-&nbsp;<%= date(new Date(), 'YYYY') %>
+        <span>
+            <%= config.author || config.title %>
+        </span>
+    </p>
+    <p class="gradient-text">
+        <a href=<%= theme.icp_link %> target="_blank"><%= theme.icp %></a>
+    </p>
+</footer>
+<%- partial('_partial/mathjax', null, {cache: true}) %>
+<%- partial('_partial/scripts', null, {cache: true}) %>
+
+<%- theme.footer_html %>
+
+</html>

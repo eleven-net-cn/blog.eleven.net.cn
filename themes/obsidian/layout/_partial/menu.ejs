@@ -1,0 +1,30 @@
+<div class="nav">
+    <ul id="menu-menu" class="menu">
+        <% for (var i in theme.menu){ %>
+            <% var _menu = theme.menu[i]; %>
+            <% if(typeof _menu !== 'string'){ %>
+                <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                    <p class="menu-second-info"><%= i %></p>
+                    <ul class="menu menu-second text-menu">
+                        <% for (var m in _menu){ %>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                <%- link_to(_menu[m].lastIndexOf('/') > 0 ? _menu[m] : _menu[m] + '/', m, {external: false, class: "menu-link"})%>
+
+                            </li>
+                        <% } %>
+                    </ul>
+                </li>
+            <% } else { %>
+                <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                    <%- link_to(theme.menu[i].lastIndexOf('/') > 0 ? theme.menu[i] : theme.menu[i] + '/', i, {external: false})%>
+                </li>
+            <% } %>    
+        <%}%>
+    </ul>
+    <p class="copyright gradient-text" id="copyright">
+        &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>
+    </p>
+    <p class="gradient-text">
+        <a href=<%= theme.icp_link %> target="_blank"><%= theme.icp %></a>
+    </p>
+</div>

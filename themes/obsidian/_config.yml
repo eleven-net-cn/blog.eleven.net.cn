@@ -1,0 +1,230 @@
+#! ---------------------------------------------------------------
+#!  ▄▀▄ █▀▄ ▄▀▀ ▀ █▀▄ ▀ ▄▀▄ █▄░█
+#! █░█ █▀█ ░▀▄ █ █░█ █ █▀█ █░▀█
+#!░▀░ ▀▀░ ▀▀░ ▀ ▀▀░ ▀ ▀░▀ ▀░░▀
+#! ᴅᴇsɪɢɴᴇᴅ & ᴄᴏᴅᴇᴅ ʙʏ ᴛʀɪᴅɪᴀᴍᴏɴᴅ
+#! ---------------------------------------------------------------
+#! Theme Obsidian - A dark Hexo theme, it's responsive, simple but elegant.
+#! Thanks to and inspirated by CSS-Tricks
+#! @author: TriDiamond
+#! @github: https://github.com/TriDiamond
+#! @changelogs: https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md
+#! @feedbacks: https://github.com/TriDiamond/hexo-theme-obsidian/issues/new
+#! ---------------------------------------------------------------
+
+#! ---------------------------------------------------------------
+#!  █▄░█ ▄▀▄ ▀█▀ █▀▀ ▄▀▀
+#! █░▀█ █░█ ░█░ █▀▀ ░▀▄
+#!▀░░▀ ░▀░ ░▀░ ▀▀▀ ▀▀░ v1.x
+#! ---------------------------------------------------------------
+#! Since version `v1.3.5` code block highlight has changed from `highlight.js` to
+#! `codemirror`, but the Hexo default highlight still need to be disabled to take affect.
+#! !! So Please make sure you disabled Hexo's default highlight setting !!
+#! ---------------------------------------------------------------
+#! Rebuild files after you changed the config:
+#! `hexo clean && hexo g`
+#! ---------------------------------------------------------------
+#! highlight:
+#!  enable: false
+#!  line_number: true
+#!  auto_detect: true
+#!  tab_replace:
+#! ---------------------------------------------------------------
+
+# Theme version
+# !! DO NOT EDIT THIS !!
+version: '1.4.5'
+
+# ---------------------------------------------------------------
+# Theme default settings
+# ---------------------------------------------------------------
+
+# Menu setting | format = title_name: link_url
+menu:
+  GitHub: 'https://github.com/eleven-net-cn'
+  FE-Ground: https://fe-ground.eleven.net.cn/
+  效率工具: 
+    library-starter: https://github.com/eleven-net-cn/library-starter
+    '@eleven.fe/cra-template-typescript': https://www.npmjs.com/package/@eleven.fe/cra-template-typescript
+    '@eleven.fe/cra-template': https://www.npmjs.com/package/@eleven.fe/cra-template
+  通用类库:
+    '@eleven.fe/reset.css': https://www.npmjs.com/package/@eleven.fe/reset.css
+    '@eleven.fe/ball-collision': https://www.npmjs.com/package/@eleven.fe/ball-collision
+  Webpack专题: 'https://webpack.eleven.net.cn/'
+  时光轴: /archives
+
+# Page custom titles
+page_titles:
+  categories: '分类'
+  tags: '标签'
+  archives: '时光轴'
+
+# Social media links
+socials:
+  github: 'https://github.com/eleven-net-cn'
+  twitter: 'https://twitter.com/TriDiamond6'
+  # stackoverflow: 'https://stackoverflow.com/users/7602324/tridiamond?tab=profile'
+
+# 网站备案号
+icp: 沪ICP备2022012323号-1
+# ICP 备案官方网址
+icp_link: https://beian.miit.gov.cn
+
+# Enable table of content
+TOC: true
+
+# 首页封面大图
+welcome_cover: /img/abc/3611616737156_.jpg
+
+# 默认的文章头图
+article_cover: /img/welcome-cover.jpg
+
+# 默认的文章列表插图
+post_cover: /img/welcome-cover.jpg
+
+# 所有 cover 的兜底备用
+cover: /img/welcome-cover.jpg
+
+# Avatar
+avatar: /img/abc/eleven-net-cn.jpeg
+
+# Disable default scrollbar
+scrollbar: false
+
+# Website keywords used for SEO
+keywords: Eleven,前端
+
+# Website slogans
+# descriptionOne: '人生没有重启键，一去不回头。'
+# descriptionTwo: '劝君莫惜金缕衣，劝君惜取少年时。'
+
+# If you use google analytics, please fill in the ID
+google_analytics: 'UA-149874671-1'
+
+# Website favicon
+favicon: /img/abc/eleven-net-cn.jpeg
+# favicon: /img/favicon.png
+
+# rss file
+rss: atom.xml
+
+# ---------------------------------------------------------------
+# Article Music settings
+# ---------------------------------------------------------------
+
+# Auto play article audio
+autoplay: true
+
+# default mp3 file
+mp3:
+  - statics/平凡之路.mp3
+  - statics/出埃及记.mp3
+  - statics/天地孤影任我行.mp3
+  - statics/英雄的黎明.mp3
+  - statics/市集.mp3
+  - statics/知音.mp3
+  - statics/Beautiful In White.mp3
+  - statics/chengdu.mp3
+
+# ---------------------------------------------------------------
+# Plugins
+# ---------------------------------------------------------------
+
+# Gitalk comment plugin
+# see https://github.com/gitalk/gitalk
+gitalk:
+  enable: true
+  autoExpand: true
+  clientID: '1fa2cbcaf1ea94926f9e'
+  clientSecret: 'd3c54315ace2f651c0c623c4169318771e377e97'
+  repo: 'blog.eleven.net.cn'
+  owner: 'eleven-net-cn'
+  admin: ['eleven-net-cn']
+  # Ensure uniqueness and length less than 50
+  id: location.pathname
+  distractionFreeMode: true
+  # Facebook-like distraction
+  proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+  # 手动开启文章的评论（新建 issues），默认无需手动开启
+  # createIssueManually: trues
+
+# Valine comment plugin (recommended!)
+# see https://valine.js.org/quickstart.html
+# 这里修改了源码，优先使用 gitalk，valine 主要用于统计文章浏览量
+valine:
+  enable: true
+  app_id: hkm8dtO9l1LGafjtOfx8tvBd-gzGzoHsz
+  app_key: UOfcRu89reXtwqeIXPzpMYMj
+  notify: true
+  verify: false
+  avatar: 'mp'
+  placeholder: '输入评论...'
+  visitor: true
+
+# Enable symbols-count-time plugin
+# see https://github.com/theme-next/hexo-symbols-count-time
+symbols_count_time:
+  enable: true
+  wordCount: true
+  readCount: true
+  awl: 4
+  wpm: 275
+  suffix: mins.
+
+# Enable html truncate
+# see https://github.com/TriDiamond/hexo-html-truncate
+html_truncate:
+  enable: true
+  # Characters kept for posts
+  postLength: 250
+  # Characters kept for cover posts
+  coverLength: 100
+  ellipsis: '...'
+  # Excluding html tags
+  excludes: ['img', 'h1', 'h2']
+  # Characters count including white spaces
+  keepWhitespaces: true
+  # Reserving the last complete word, without breaking the word
+  reserveLastWord: true
+
+# Enable Busuanzi statistic plugin
+# see http://ibruce.info/2015/04/04/busuanzi/
+# 仅统计网站总的浏览量
+busuanzi:
+  enable: false
+
+#Enable social media sharing
+sharejs:
+  enable: false
+  disabled: 'facebook,douban,linkedin,diandian,tencent,google'
+
+# Use codemirror instead of highlight js for better colors
+# if you want more language support check the modes list at official website
+# modes see: https://codemirror.net/mode/
+# see https://codemirror.net/
+codemirror:
+  modes: ['javascript', 'css', 'sass', 'xml', 'htmlmixed', 'clike', 'php', 'shell', 'python']
+
+# Enabling mathjax support
+mathjax: true
+
+# custom header HTML
+header_html: ''
+
+# custom footer HTML
+footer_html: '
+<!-- 例：百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?your_code";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+'
+# Show previous post and next post in post footer if exists
+# Available values: true | false
+post_navigation: true
+
