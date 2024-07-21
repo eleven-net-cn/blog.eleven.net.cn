@@ -30,8 +30,8 @@ https://blog.eleven.net.cn/
 
   ```bash
   yarn build    # 编译
-  yarn clean    # 清空编译结果
-  yarn deploy   # 部署（到 github pages）
+  yarn clean    # 清空
+  yarn deploy   # 部署（到 GitHub Pages）
   ```
 
 ## Contents
