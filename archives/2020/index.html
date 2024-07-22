@@ -181,18 +181,16 @@ curl -o- h...
                                     <div class="timeline-content">
                                         <a class="timeline-title" target="_self" href="/2021/04/07/git/questions/">Git 非常规问题记录</a>
                                         <p>
-                                            与 fork 的上游仓库保持同步一般有 3 种办法可用：
-
-命令行同步（安全，推荐）
-
-git remote -v
-# 将上游仓库添加进来
-git remote add upstream git@github.com:xxx/xxx.git
-# 拉取更新
-git fetch upstream
-# 合并过来
-git merge upstream/master
-git push origin m...
+                                            区分目录指定不同设置在区分企业与个人项目的提交信息时较为常用
+# 推荐单独创建配置文件
+touch ~/.gitconfig-xx
+例如，需要单独设置 username/user-email
+[user]
+    name = xx
+    email = xxx@gmail.com
+# 打开 Git 默认的配置文件，添加指定目录下的规则
+open ~/.gitconfig
+例如，指定 ~/...
                                         </p>
                                     </div>
                                 </li>
