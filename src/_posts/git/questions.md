@@ -6,7 +6,7 @@ tags: [Git]
 cover:
 ---
 
-## 区分目录指定不同设置
+## 区分目录、remote 指定不同设置
 
 在区分企业与个人项目的提交信息时较为常用
 
@@ -28,11 +28,32 @@ touch ~/.gitconfig-xx
 open ~/.gitconfig
 ```
 
+### 区分目录设置
+
 例如，指定 `~/xx/xx/` 目录使用上方创建的 `.gitconfig-xx` 配置，则在 `~/.gitconfig` 文件中添加如下配置：
 
 ```zsh
 [includeIf "gitdir:~/xx/xx/"]
   path = ~/.gitconfig-xx
+```
+
+### 单独设置 GitHub
+
+若仅对 GitHub 使用不同配置，推荐新建 `.gitconfig-github` 配置文件，在 `~/.gitconfig` 文件中添加如下配置：
+
+```zsh
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+	path = ~/.gitconfig-github
+```
+
+### 单独设置企业私有 GitLab
+
+若仅对某域名的企业私有 GitLab 使用不同配置，推荐新建 `.gitconfig-xx` 配置文件，在 `~/.gitconfig` 文件中添加如下配置：
+
+```zsh
+# xx.xxx.com 为示例的企业私有域名
+[includeIf "hasconfig:remote.*.url:git@xx.xxx.com:*/**"]
+	path = ~/.gitconfig-xx
 ```
 
 ## 与 fork 的上游仓库保持同步
