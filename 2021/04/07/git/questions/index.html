@@ -10,11 +10,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Eleven,前端,"> 
-    <meta name="description" content="区分目录指定不同设置在区分企业与个人项目的提交信息时较为常用
+    <meta name="description" content="区分目录、remote 指定不同设置在区分企业与个人项目的提交信息时较为常用
 # 推荐单独创建配置文件
 touch ~/.gitconfig-xx
-例如，需要单独设置 username/user-email
-[us,"> 
+例如，需要单独设置 username/user-e,"> 
     <meta name="author" content="eleven-net-cn"> 
     <link rel="alternative" href="atom.xml" title="Eleven 的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/abc/eleven-net-cn.jpeg"> 
@@ -107,13 +106,13 @@ touch ~/.gitconfig-xx
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    2.4k
+                    3.3k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
+                    3 mins.
                 </span>
                 
                 
@@ -146,7 +145,7 @@ touch ~/.gitconfig-xx
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="区分目录指定不同设置"><a href="#区分目录指定不同设置" class="headerlink" title="区分目录指定不同设置"></a>区分目录指定不同设置</h2><p>在区分企业与个人项目的提交信息时较为常用</p>
+            <h2 id="区分目录、remote-指定不同设置"><a href="#区分目录、remote-指定不同设置" class="headerlink" title="区分目录、remote 指定不同设置"></a>区分目录、remote 指定不同设置</h2><p>在区分企业与个人项目的提交信息时较为常用</p>
 <pre><code class="zsh"># 推荐单独创建配置文件
 touch ~/.gitconfig-xx</code></pre>
 <p>例如，需要单独设置 username/user-email</p>
@@ -155,9 +154,16 @@ touch ~/.gitconfig-xx</code></pre>
     email = xxx@gmail.com</code></pre>
 <pre><code class="zsh"># 打开 Git 默认的配置文件，添加指定目录下的规则
 open ~/.gitconfig</code></pre>
-<p>例如，指定 <code>~/xx/xx/</code> 目录使用上方创建的 <code>.gitconfig-xx</code> 配置，则在 <code>~/.gitconfig</code> 文件中添加如下配置：</p>
+<h3 id="区分目录设置"><a href="#区分目录设置" class="headerlink" title="区分目录设置"></a>区分目录设置</h3><p>例如，指定 <code>~/xx/xx/</code> 目录使用上方创建的 <code>.gitconfig-xx</code> 配置，则在 <code>~/.gitconfig</code> 文件中添加如下配置：</p>
 <pre><code class="zsh">[includeIf &quot;gitdir:~/xx/xx/&quot;]
   path = ~/.gitconfig-xx</code></pre>
+<h3 id="单独设置-GitHub"><a href="#单独设置-GitHub" class="headerlink" title="单独设置 GitHub"></a>单独设置 GitHub</h3><p>若仅对 GitHub 使用不同配置，推荐新建 <code>.gitconfig-github</code> 配置文件，在 <code>~/.gitconfig</code> 文件中添加如下配置：</p>
+<pre><code class="zsh">[includeIf &quot;hasconfig:remote.*.url:git@github.com:*/**&quot;]
+    path = ~/.gitconfig-github</code></pre>
+<h3 id="单独设置企业私有-GitLab"><a href="#单独设置企业私有-GitLab" class="headerlink" title="单独设置企业私有 GitLab"></a>单独设置企业私有 GitLab</h3><p>若仅对某域名的企业私有 GitLab 使用不同配置，推荐新建 <code>.gitconfig-xx</code> 配置文件，在 <code>~/.gitconfig</code> 文件中添加如下配置：</p>
+<pre><code class="zsh"># xx.xxx.com 为示例的企业私有域名
+[includeIf &quot;hasconfig:remote.*.url:git@xx.xxx.com:*/**&quot;]
+    path = ~/.gitconfig-xx</code></pre>
 <h2 id="与-fork-的上游仓库保持同步"><a href="#与-fork-的上游仓库保持同步" class="headerlink" title="与 fork 的上游仓库保持同步"></a>与 fork 的上游仓库保持同步</h2><p>一般有 3 种办法可用：</p>
 <ol>
 <li>命令行同步（安全，推荐）</li>
@@ -295,7 +301,7 @@ insert 13.229.188.59 github.com</code></pre>
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%86%E7%9B%AE%E5%BD%95%E6%8C%87%E5%AE%9A%E4%B8%8D%E5%90%8C%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">区分目录指定不同设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E-fork-%E7%9A%84%E4%B8%8A%E6%B8%B8%E4%BB%93%E5%BA%93%E4%BF%9D%E6%8C%81%E5%90%8C%E6%AD%A5"><span class="toc-number">2.</span> <span class="toc-text">与 fork 的上游仓库保持同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA-hosts-%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">提示 hosts 问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enter-passphrase-for-key-%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">Enter passphrase for key 每次都需要输入密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%9F%90%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95%E4%B8%8D%E8%A2%AB%E8%B7%9F%E8%B8%AA"><span class="toc-number">5.</span> <span class="toc-text">设置某文件、目录不被跟踪</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%86%E7%9B%AE%E5%BD%95%E3%80%81remote-%E6%8C%87%E5%AE%9A%E4%B8%8D%E5%90%8C%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">区分目录、remote 指定不同设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%88%86%E7%9B%AE%E5%BD%95%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">区分目录设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%8B%AC%E8%AE%BE%E7%BD%AE-GitHub"><span class="toc-number">1.2.</span> <span class="toc-text">单独设置 GitHub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%8B%AC%E8%AE%BE%E7%BD%AE%E4%BC%81%E4%B8%9A%E7%A7%81%E6%9C%89-GitLab"><span class="toc-number">1.3.</span> <span class="toc-text">单独设置企业私有 GitLab</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E-fork-%E7%9A%84%E4%B8%8A%E6%B8%B8%E4%BB%93%E5%BA%93%E4%BF%9D%E6%8C%81%E5%90%8C%E6%AD%A5"><span class="toc-number">2.</span> <span class="toc-text">与 fork 的上游仓库保持同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA-hosts-%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">提示 hosts 问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enter-passphrase-for-key-%E6%AF%8F%E6%AC%A1%E9%83%BD%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">Enter passphrase for key 每次都需要输入密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%9F%90%E6%96%87%E4%BB%B6%E3%80%81%E7%9B%AE%E5%BD%95%E4%B8%8D%E8%A2%AB%E8%B7%9F%E8%B8%AA"><span class="toc-number">5.</span> <span class="toc-text">设置某文件、目录不被跟踪</span></a></li></ol>
                 </div>
             </div>
             
@@ -314,7 +320,7 @@ insert 13.229.188.59 github.com</code></pre>
 </body>
 <footer>
     <p class="copyright gradient-text" id="copyright">
-        &copy;&nbsp;2020&nbsp;-&nbsp;2024
+        &copy;&nbsp;2020&nbsp;-&nbsp;2025
         <span>
             eleven-net-cn
         </span>
