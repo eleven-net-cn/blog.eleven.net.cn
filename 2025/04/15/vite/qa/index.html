@@ -5,13 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>前端依赖治理 - Eleven 的博客</title>
+    <title>Vite 疑难杂症 - Eleven 的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Eleven,前端,"> 
-    <meta name="description" content="简介
-Validate and visualise dependencies. With your rules. JavaScript. TypeScript. CoffeeScript. ES6,,"> 
+    <meta name="description" content="在 2022 年初投产了第一个 Vite 应用到产线，陆续处理的问题 Case，挑选一些记录下来。
+应用中需要支持 require 语法应用代码中，通常不再建议使用 require，应当都替换为 i,"> 
     <meta name="author" content="eleven-net-cn"> 
     <link rel="alternative" href="atom.xml" title="Eleven 的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/abc/eleven-net-cn.jpeg"> 
@@ -65,7 +65,7 @@ Validate and visualise dependencies. With your rules. JavaScript. TypeScript. Co
     />
     <div id="play-icon" title="播放/暂停" class="iconfont icon-play"></div>
     <div id="play-next" title="下一曲" class="iconfont icon-next icon-arrow-right- next"></div>
-    <h3 class="subtitle">前端依赖治理</h3>
+    <h3 class="subtitle">Vite 疑难杂症</h3>
     <div class="social">
       <!--        <div class="like-icon">-->
       <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -94,26 +94,26 @@ Validate and visualise dependencies. With your rules. JavaScript. TypeScript. Co
                 
                 <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
                 
-                七月 22, 2022
+                四月 15, 2025
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2022/07/22/fe/dependency-cruiser/" title="前端依赖治理" class="">前端依赖治理</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2025/04/15/vite/qa/" title="Vite 疑难杂症" class="">Vite 疑难杂症</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    8.7k
+                    5.2k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    8 mins.
+                    5 mins.
                 </span>
                 
                 
-                <span id="/2022/07/22/fe/dependency-cruiser/" class="leancloud_visitors" data-flag-title="前端依赖治理">
+                <span id="/2025/04/15/vite/qa/" class="leancloud_visitors" data-flag-title="Vite 疑难杂症">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
                     <span class="leancloud-visitors-count">--</span>
                 </span>
@@ -140,220 +140,116 @@ Validate and visualise dependencies. With your rules. JavaScript. TypeScript. Co
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
-<p>Validate and visualise dependencies. With your rules. JavaScript. TypeScript. CoffeeScript. ES6, CommonJS, AMD.</p>
-</blockquote>
-<p>dependency-cruiser，用于前端依赖模块的可视化和依赖的校验，支持使用定制的规则，支持前端常用的 JS、TS 语言以及 ES Module、CommonJS 等模块规范。</p>
-<p>GitHub：<a target="_blank" rel="noopener" href="https://github.com/sverweij/dependency-cruiser">https://github.com/sverweij/dependency-cruiser</a></p>
-<h2 id="模块依赖可视化"><a href="#模块依赖可视化" class="headerlink" title="模块依赖可视化"></a>模块依赖可视化</h2><p>推荐作为阅读项目或开源库源码的辅助工具，更易理清项目内部的结构、依赖关系。</p>
-<p>官方示例图</p>
-<p><img src="https://static.eleven.net.cn/images/dependency-cruiser-archi-graph.svg" alt=""></p>
-<p>官方示例图（React）</p>
-<p><img src="https://static.eleven.net.cn/images/react-high-level-dependencies.svg" alt=""></p>
-<p>更多示例：<a target="_blank" rel="noopener" href="https://github.com/sverweij/dependency-cruiser/blob/develop/doc/real-world-samples.md">https://github.com/sverweij/dependency-cruiser/blob/develop/doc/real-world-samples.md</a></p>
-<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p>推荐最简单的查看方式，安装 VS Code 插件 ☞ Dependency Cruiser Extension</p>
-<p><img src="/imgs/dependency_cruiser_vscode_plugin.png" alt=""></p>
-<p>安装好插件后，在 vscode 中目标项目目录上，点击右键 - “View Dependencies”，即可自动生成相关依赖分析图，示例如下。</p>
-<h3 id="更多方式"><a href="#更多方式" class="headerlink" title="更多方式"></a>更多方式</h3><p>如果有更加具体的需求场景，也可以通过工具生成 svg 依赖关系图片，详细参照官方说明 <a target="_blank" rel="noopener" href="https://github.com/sverweij/dependency-cruiser#show-stuff-to-your-grandma">https://github.com/sverweij/dependency-cruiser#show-stuff-to-your-grandma</a> 。</p>
-<p>一般需要做这些事情：</p>
-<ol>
-<li><p>安装 graphviz，用来生成依赖关系图</p>
-<pre><code class="bash">brew install graphviz</code></pre>
-</li>
-<li><p>在项目根目录下安装 dependency-cruiser</p>
-<pre><code class="bash">npm i dependency-cruiser -D</code></pre>
-</li>
-<li><p>运行命令，生成 svg 依赖关系图片</p>
-<pre><code class="bash">npx depcruise --include-only &quot;^src&quot; —output-type dot src | dot -T svg &gt; dependency-graph.svg</code></pre>
-</li>
-</ol>
-<p>相关参数：</p>
-<ul>
-<li><p><code>-output-type dot</code> ：表示输出格式为 dot，意味着使用 Graphviz 来输出</p>
-</li>
-<li><p><code>dot -T svg &gt; dependency-graph.svg</code> ：为 Graphviz 的命令行语法，表示输出名为 dependency-graph 的 svg 文件</p>
-</li>
-<li><p><code>-exclude</code>：用于过滤掉图上不关心的依赖</p>
-</li>
-<li><p><code>-include-only</code>：与 –exclude 相反，只保留范围内的依赖</p>
-</li>
-<li><p><code>-do-not-follow</code>：会过滤掉某个依赖的后续依赖</p>
-</li>
-<li><p><code>-max-depth</code>：指定依赖树的深度</p>
-</li>
-</ul>
-<h2 id="模块依赖校验"><a href="#模块依赖校验" class="headerlink" title="模块依赖校验"></a>模块依赖校验</h2><p>借助 dependency-cruiser 对项目的依赖关系做校验，根据指定的规则，或自定义的规则，规避项目中可能产生的问题风险。</p>
-<p>在某些复杂场景，或有较多模块使用约定的项目，非常适合使用 dependency-cruiser 去做规则校验，限制不规范或危险的行为。</p>
-<h3 id="使用方式-1"><a href="#使用方式-1" class="headerlink" title="使用方式"></a>使用方式</h3><ol>
-<li><p>在项目中初始化配置文件</p>
-<pre><code class="bash">npx -p dependency-cruiser depcruise --init</code></pre>
-<p><img src="/imgs/dependency_cruiser_init.gif" alt=""></p>
-<p>会在根目录下生成 .dependency-cruiser.js 配置文件</p>
-</li>
-<li><p>在项目中安装依赖</p>
-<pre><code class="bash">npm i dependency-cruiser -D</code></pre>
-</li>
-<li><p>在 package.json 中添加命令</p>
-<pre><code class="json">&#123;
-  &quot;scripts&quot;: &#123;
-    &quot;start&quot;: &quot;vite --port 4000&quot;,
-    &quot;build&quot;: &quot;vue-tsc --noEmit &amp;&amp; vite build&quot;,
-    &quot;preview&quot;: &quot;vite preview&quot;,
-  + &quot;lint&quot;: &quot;depcruise src --config .dependency-cruiser.cjs&quot;
-  &#125;,
-  +&quot;gitHooks&quot;: &#123;
-  + &quot;pre-commit&quot;: &quot;lint-staged --allow-empty&quot;
-  +&#125;,
-  + &quot;lint-staged&quot;: &#123;
-  +   &quot;src/**/*.&#123;js?(x),ts?(x)&#125;&quot;: [
-  +    &quot;yarn lint&quot;
-  +  ]
-  +&#125;
-&#125;</code></pre>
-<p>添加命令 lint，随时运行校验。</p>
-<p>推荐加入到 Git Hooks 中，例如：放到 pre-commit 阶段执行校验，未通过禁止提交代码。</p>
-<p><img src="/imgs/dependency_cruiser_lint.png" alt=""></p>
-<p>这里为了方便演示，Git Hooks 用的 yorkie，若使用 husky 则更换对应配置。</p>
-</li>
-</ol>
-<h3 id="规则文件"><a href="#规则文件" class="headerlink" title="规则文件"></a>规则文件</h3><p>来看一下规则文件都有什么？</p>
-<p>文件结构</p>
-<pre><code class="js">// .dependency-cruiser.cjs
-module.exports = &#123;
-  forbidden: [ // 被禁止的规则列表
-    &#123;...&#125;, // 规则1
-    &#123;...&#125;, // 规则2
-    &#123;...&#125;, // 规则3
-    // ...
-  ],
-  options: &#123; // 工具层面的若干配置
-   // ...
-  &#125;
-&#125;</code></pre>
-<h3 id="规则定义"><a href="#规则定义" class="headerlink" title="规则定义"></a>规则定义</h3><pre><code class="json">&#123;
-  // ----- 规则基本配置 -----
-  name: &#39;no-non-package-json&#39;, // 规则名称
-  severity: &#39;error&#39;, // 严重等级
-  comment: &quot;This module depends on an npm package that isn&#39;t in the &#39;dependencies&#39; section of your package.json. &quot; +
-        &quot;That&#39;s problematic as the package either (1) won&#39;t be available on live (2 - worse) will be &quot; +
-        &#39;available on live with an non-guaranteed version. Fix it by adding the package to the dependencies &#39; +
-        &#39;in your package.json.&#39;, // 规则描述
-  // ----- 规则内容 -----
-  from: &#123;&#125;, // 不填则表示所有引用 ☞ 哪些模块、目录会被限制
-  to: &#123; // 命中哪些规则限制
-    dependencyTypes: [ // 命中的规则
-      &#39;npm-no-pkg&#39;,
-      &#39;npm-unknown&#39;,
-    ],
-    pathNot: [], // 排除掉哪些
-  &#125;,
-&#125;,</code></pre>
-<p>from 和 to 描述规则的具体内容，from 表示「依赖方」，to 表示「被依赖方」。</p>
-<h3 id="常用规则"><a href="#常用规则" class="headerlink" title="常用规则"></a>常用规则</h3><p>常用规则基本都已默认内置在生成的配置文件中，根据需要去开启、关闭或修改匹配范围、规则即可。</p>
-<ul>
-<li><p>禁止循环引用 no-circular</p>
-</li>
-<li><p>禁止引用不存在的模块（幽灵依赖） not-to-unresolvable</p>
-</li>
-<li><p>检测未被使用的模块 no-orphans</p>
-</li>
-<li><p>禁止生产环境代码使用开发依赖 not-to-dev-dep</p>
-</li>
-<li><p>……</p>
-</li>
-</ul>
-<h3 id="自定义规则"><a href="#自定义规则" class="headerlink" title="自定义规则"></a>自定义规则</h3><p>借助强大的可配置能力，几乎可以制定出任何想要的依赖限制规则，以下举几个栗子。</p>
-<ol>
-<li><p>指定范围禁止引用某些三方模块</p>
-<pre><code class="json">&#123;
-  name: &#39;not-to-import-src-node&#39;,
-  comment: &#39;src/node 禁止引用的模块&#39;,
-  severity: &#39;error&#39;,
-  // from: &#123;&#125;, // 不填，所有引用
-  from: &#123;
-    path: &#39;^src/node&#39;,
-  &#125;,
-  to: &#123;
-    path: [
-      &#39;antd&#39;,
-      &#39;react-dnd&#39;,
-      &#39;react-dnd-html5-backend&#39;,
-      &#39;moment&#39;,
-    ],
-  &#125;,
-&#125;;</code></pre>
-</li>
-<li><p>禁止跨模块引用</p>
-<p>限制 src 下某个大模块，只能引用模块内部依赖或公共模块</p>
-<pre><code class="json">&#123;
-  // ----- 规则基本配置 -----
-  name: &#39;no-cross-module-import&#39;,
-  severity: &#39;error&#39;, // 严重等级
-  comment: &#39;禁止跨模块引用&#39;,
-  // ----- 规则内容 -----
-  from: &#123;
-    path: &#39;^src/pageA&#39;,
-  &#125;,
-  to: &#123;
-    pathNot: [
-      // 只能引入自己或公共的模块
-      &#39;^src/pageA&#39;,
-      &#39;^src/utils&#39;,
-    ]
-  &#125;,
-&#125;,</code></pre>
-</li>
-<li><p>叶子依赖禁止再依赖其它模块</p>
-<p>例如，项目封装了某个模块，完全使用浏览器原生 API，禁止使用其它相关的社区依赖，可以做如下限制。</p>
-<pre><code class="json">&#123;
-  // ----- 规则基本配置 -----
-  name: &#39;cookies-leaf&#39;,
-  comment: &#39;cookies 库不应该有其它依赖&#39;,
-  severity: &#39;error&#39;,
-  // ----- 规则内容 -----
-  from: &#123;
-    path: &#39;^src/libs/cookies&#39;,
-  &#125;,
-  to: &#123;&#125;, // 不能引用任何其它依赖
-&#125;,</code></pre>
-</li>
-</ol>
-<h3 id="集成到-NodeJS-脚本"><a href="#集成到-NodeJS-脚本" class="headerlink" title="集成到 NodeJS 脚本"></a>集成到 NodeJS 脚本</h3><p><a target="_blank" rel="noopener" href="https://github.com/sverweij/dependency-cruiser/blob/develop/doc/api.md">https://github.com/sverweij/dependency-cruiser/blob/develop/doc/api.md</a></p>
-<p>对于一些较为复杂的项目，尤其有诸多规则限制的项目，考虑将其集成到脚本中做默认校验会，将是一个好选择。</p>
-<pre><code class="typescript">import &#123; cruise &#125; from &quot;dependency-cruiser&quot;;
-import type &#123; IReporterOutput, ICruiseOptions &#125; from &quot;dependency-cruiser&quot;;
+            <p>在 2022 年初投产了第一个 Vite 应用到产线，陆续处理的问题 Case，挑选一些记录下来。</p>
+<h2 id="应用中需要支持-require-语法"><a href="#应用中需要支持-require-语法" class="headerlink" title="应用中需要支持 require 语法"></a>应用中需要支持 <code>require</code> 语法</h2><p>应用代码中，通常不再建议使用 <code>require</code>，应当都替换为 <code>import</code>.</p>
+<p>但是，若为迁移旧代码或其它原因，社区有多款插件可以选用。</p>
+<p>简单的场景推荐：<a target="_blank" rel="noopener" href="https://github.com/wangzongming/vite-plugin-require">https://github.com/wangzongming/vite-plugin-require</a></p>
+<p>如果是三方依赖包的产物中包含了 <code>require()</code> 代码呢？</p>
+<p>这种场景更加复杂一些，在 esbuild 预构建时可能遇到模块导出的值不符合预期，在调研对比多个社区方案后，推荐考虑使用以下插件：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vite-plugin/vite-plugin-commonjs">https://github.com/vite-plugin/vite-plugin-commonjs</a></p>
+<h2 id="lib-模式编译，如何引入-polyfill？"><a href="#lib-模式编译，如何引入-polyfill？" class="headerlink" title="lib 模式编译，如何引入 polyfill？"></a>lib 模式编译，如何引入 polyfill？</h2><p>在打包 App 应用时可以依靠 <a target="_blank" rel="noopener" href="https://github.com/vitejs/vite/tree/main/packages/plugin-legacy">@vitejs/plugin-legacy</a> 处理 Polyfill，而 lib 模式编译类库时，不会引入 Polyfill。</p>
+<p>推荐使用 Rollup 插件，通过 Babel 在最后阶段再处理 Polyfill。</p>
+<pre><code class="typescript">import &#123; defineConfig &#125; from &#39;vite&#39;;
+import &#123; getBabelOutputPlugin &#125; from &#39;@rollup/plugin-babel&#39;;
 
-const ARRAY_OF_FILES_AND_DIRS_TO_CRUISE: string[] = [&quot;src&quot;];
-const cruiseOptions: ICruiseOptions = &#123;
-  includeOnly: &quot;src&quot;,
-&#125;;
-try &#123;
-  const cruiseResult: IReporterOutput = cruise(
-    ARRAY_OF_FILES_AND_DIRS_TO_CRUISE,
-    cruiseOptions
-  );
-  console.dir(cruiseResult.output, &#123; depth: 10 &#125;);
-&#125; catch (error) &#123;
-  console.error(error);
-&#125;</code></pre>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ol>
-<li><p>跟 ESLint 有什么区别么？</p>
-<p>A：二者没有直接联系，一般推荐搭配起来一起使用。eslint 负责代码检查，dependency-cruiser 负责依赖检查。</p>
-</li>
-<li><p>能集成到 eslint 中，作为 eslint plugin 使用么？</p>
-<p>A：暂时不能</p>
+export default defineConfig(&#123;
+  build: &#123;
+    rollupOptions: &#123;
+      plugins: [
+        /**
+         * Running Babel on the generated code:
+         *  https://github.com/rollup/plugins/blob/master/packages/babel/README.md#running-babel-on-the-generated-code
+         *
+         * Transforming ES6+ syntax to ES5 is not supported yet, there are two ways to do:
+         *  https://github.com/evanw/esbuild/issues/1010#issuecomment-803865232
+         * We choose to run Babel on the output files after esbuild.
+         *
+         * @vitejs/plugin-legacy does not support library mode:
+         *  https://github.com/vitejs/vite/issues/1639
+         */
+        getBabelOutputPlugin(&#123;
+          allowAllFormats: true,
+          presets: [
+            [
+              &#39;@babel/preset-env&#39;,
+              &#123;
+                useBuiltIns: false,
+                exclude: [&#39;transform-typeof-symbol&#39;],
+                modules: false,
+              &#125;,
+            ],
+          ],
+          plugins: [
+            [
+              &#39;@babel/plugin-transform-runtime&#39;,
+              &#123;
+                corejs: false,
+                // version: require(&#39;@babel/runtime&#39;).version,
+              &#125;,
+            ],
+          ].filter(Boolean),
+        &#125;),
+      ],
+    &#125;,
+  &#125;,
+&#125;);</code></pre>
+<h2 id="Vite-lib-模式打包时，静态资源会被内联（官方解释），如何处理？"><a href="#Vite-lib-模式打包时，静态资源会被内联（官方解释），如何处理？" class="headerlink" title="Vite lib 模式打包时，静态资源会被内联（官方解释），如何处理？"></a>Vite lib 模式打包时，静态资源会被内联（<a target="_blank" rel="noopener" href="https://cn.vite.dev/config/build-options.html#build-assetsinlinelimit">官方解释</a>），如何处理？</h2><p>当我们使用 Vite 编译组件、类库时，此问题暴露尤其明显。例如组件中使用的某几张图片，留待使用该组件的应用打包应属最佳，否则，大量的图片被内联在 js 代码中，会严重影响加载速度。</p>
+<p>在我们的场景下此问题十分重要，社区内没有可使用的方案，layne 同学编写了以下插件完美解决问题。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/laynezh/vite-plugin-lib-assets">https://github.com/laynezh/vite-plugin-lib-assets</a></p>
 <ul>
-<li><p>相关讨论：<a target="_blank" rel="noopener" href="https://github.com/sverweij/dependency-cruiser/issues/529">https://github.com/sverweij/dependency-cruiser/issues/529</a></p>
-</li>
-<li><p>有人做了尝试：<a target="_blank" rel="noopener" href="https://github.com/sverweij/eslint-plugin-budapestian">https://github.com/sverweij/eslint-plugin-budapestian</a></p>
-</li>
+<li><code>iife</code> 资源路径转拼接指定的 <code>publicUrl</code></li>
+<li><code>esm</code> 转换为相对路径引入</li>
+<li><code>commonjs</code> 转换为相对路径引入</li>
 </ul>
-</li>
-<li><p>能集成到 webpack 等编译工具中，达到编码中自动 watch 反馈的体验么？</p>
-<p>A：暂时不能。主要是性能方面的考虑，不太适合提供这样的能力。</p>
-</li>
-</ol>
-<p>更多问题的官方 FAQ：<a target="_blank" rel="noopener" href="https://github.com/sverweij/dependency-cruiser/blob/develop/doc/faq.md">https://github.com/sverweij/dependency-cruiser/blob/develop/doc/faq.md</a></p>
+<pre><code class="typescript">import &#123; defineConfig &#125; from &#39;vite&#39;;
+import assetsPlugin from &#39;@laynezh/vite-plugin-lib-assets&#39;;
+
+export default defineConfig(&#123;
+  plugins: [
+    assetsPlugin(&#123;
+      name: &#39;[name].[contenthash:8].[ext]&#39;,
+      limit: 1024 * 8,
+      publicUrl: undefined,
+    &#125;),
+  ],
+&#125;);</code></pre>
+<h2 id="commonjs-模块中引用的资源应原样输出"><a href="#commonjs-模块中引用的资源应原样输出" class="headerlink" title="commonjs 模块中引用的资源应原样输出"></a>commonjs 模块中引用的资源应原样输出</h2><pre><code class="typescript">import &#123; defineConfig &#125; from &#39;vite&#39;;
+
+export default defineConfig(&#123;
+  build: &#123;
+    commonjsOptions: &#123;
+      /**
+       * https://github.com/rollup/plugins/tree/master/packages/commonjs#requirereturnsdefault
+       *
+       * require(&#39;./images/123.png&#39;) =&gt; import Img123 from &#39;./images/123.png&#39;
+       *
+       * and &#39;./images/123.png&#39; 会被 vite 处理成 base64 格式实现载入
+       */
+      requireReturnsDefault(id) &#123;
+        const [pureId] = id.split(&#39;?&#39;, 2);
+        return commonjsAssetsFilter(pureId);
+      &#125;,
+    &#125;,
+  &#125;,
+&#125;);</code></pre>
+<h2 id="修改-lib-模式输出的样式文件名"><a href="#修改-lib-模式输出的样式文件名" class="headerlink" title="修改 lib 模式输出的样式文件名"></a>修改 lib 模式输出的样式文件名</h2><p>不同于修改 js 文件输出的名称，样式文件需要不一样的处理方式。</p>
+<pre><code class="typescript">import defineConfig from &#39;vite&#39;;
+
+export default defineConfig(&#123;
+  build: &#123;
+    rollupOptions: &#123;
+      output: &#123;
+        assetFileNames(assetInfo) &#123;
+          // https://github.com/vitejs/vite/issues/4863
+          if (!ignoreStyles &amp;&amp; assetInfo.name === &#39;style.css&#39;) &#123;
+            return `$&#123;fileName&#125;.css`;
+          &#125;
+          return assetInfo.name;
+        &#125;,
+      &#125;,
+    &#125;,
+  &#125;,
+&#125;);</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" preload="auto" controls="controls"
@@ -401,13 +297,9 @@ try &#123;
             <div class="post-nav">
                 <hr>
                 
-                    <div class="post-nav-item">上一篇：<a href="/2025/04/15/vite/qa/" rel="prev" 
-                        title="Vite 疑难杂症">Vite 疑难杂症
-                      </a></div>
                 
-                
-                    <div class="post-nav-item">下一篇：<a href="/2022/02/23/vscode/dev/" rel="next" 
-                        title="vscode 调试技巧">vscode 调试技巧</a></div>
+                    <div class="post-nav-item">下一篇：<a href="/2022/07/22/fe/dependency-cruiser/" rel="next" 
+                        title="前端依赖治理">前端依赖治理</a></div>
                                 
             </div>   
                         
@@ -460,7 +352,7 @@ try &#123;
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%BE%9D%E8%B5%96%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">模块依赖可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">更多方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E4%BE%9D%E8%B5%96%E6%A0%A1%E9%AA%8C"><span class="toc-number">3.</span> <span class="toc-text">模块依赖校验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-1"><span class="toc-number">3.1.</span> <span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">规则文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99%E5%AE%9A%E4%B9%89"><span class="toc-number">3.3.</span> <span class="toc-text">规则定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%A7%84%E5%88%99"><span class="toc-number">3.4.</span> <span class="toc-text">常用规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%84%E5%88%99"><span class="toc-number">3.5.</span> <span class="toc-text">自定义规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E5%88%B0-NodeJS-%E8%84%9A%E6%9C%AC"><span class="toc-number">3.6.</span> <span class="toc-text">集成到 NodeJS 脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">4.</span> <span class="toc-text">其它</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%AD%E9%9C%80%E8%A6%81%E6%94%AF%E6%8C%81-require-%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">应用中需要支持 require 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lib-%E6%A8%A1%E5%BC%8F%E7%BC%96%E8%AF%91%EF%BC%8C%E5%A6%82%E4%BD%95%E5%BC%95%E5%85%A5-polyfill%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">lib 模式编译，如何引入 polyfill？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vite-lib-%E6%A8%A1%E5%BC%8F%E6%89%93%E5%8C%85%E6%97%B6%EF%BC%8C%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BC%9A%E8%A2%AB%E5%86%85%E8%81%94%EF%BC%88%E5%AE%98%E6%96%B9%E8%A7%A3%E9%87%8A%EF%BC%89%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">Vite lib 模式打包时，静态资源会被内联（官方解释），如何处理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#commonjs-%E6%A8%A1%E5%9D%97%E4%B8%AD%E5%BC%95%E7%94%A8%E7%9A%84%E8%B5%84%E6%BA%90%E5%BA%94%E5%8E%9F%E6%A0%B7%E8%BE%93%E5%87%BA"><span class="toc-number">4.</span> <span class="toc-text">commonjs 模块中引用的资源应原样输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-lib-%E6%A8%A1%E5%BC%8F%E8%BE%93%E5%87%BA%E7%9A%84%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">5.</span> <span class="toc-text">修改 lib 模式输出的样式文件名</span></a></li></ol>
                 </div>
             </div>
             
