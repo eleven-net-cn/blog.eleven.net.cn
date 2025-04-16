@@ -8,6 +8,8 @@ cover:
 
 在 2022 年初投产了第一个 Vite 应用到产线，陆续处理的问题 Case，挑选一些记录下来。
 
+若改造旧的 webpack 应用，推荐参照 [webpack-to-vite](https://github.com/originjs/webpack-to-vite/blob/main/README-zh.md) 理解更多差异。
+
 ## 应用中需要支持 `require` 语法
 
 应用代码中，通常不再建议使用 `require`，应当都替换为 `import`.
