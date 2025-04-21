@@ -1,8 +1,8 @@
 ---
 title: Vite 疑难杂症
-date: 2025-04-15 10:52:55
-category:
-tags:
+date: 2024-12-15 10:52:55
+category: Vite
+tags: [Vite]
 cover:
 ---
 
