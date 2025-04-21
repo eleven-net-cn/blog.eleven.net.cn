@@ -237,29 +237,31 @@
   <div id="post0" class="else">
     <p class="animated fadeInDown">
       
-      <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
-       四月 15, 2025
+      <a href="/categories/LowCode"
+        ><b>「 </b>LOWCODE<b> 」</b></a
+      >
+       四月 17, 2025
     </p>
     <h3 class="post-title animated fadeInDown">
-      <a href="/2025/04/15/vite/qa/" title="Vite 疑难杂症" class="posttitle">Vite 疑难杂症</a>
+      <a href="/2025/04/17/lowcode/core/behavior/" title="低代码核心实现 - 组件间数据和行为交互" class="posttitle">低代码核心实现 - 组件间数据和行为交互</a>
     </h3>
     
     <p class="post-count animated fadeInDown">
       
       <span>
         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-        5.3k
+        2k
       </span>
        
       
       <span>
         <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-        5 mins.
+        2 mins.
       </span>
        
       <!-- 
       <span
-        id="/2025/04/15/vite/qa/"
+        id="/2025/04/17/lowcode/core/behavior/"
         class="leancloud_visitors"
         data-flag-title=""
       >
@@ -270,14 +272,18 @@
       <!-- 是统计网站总的访问量，而非某篇文章 -->
       <!--  -->
     </p>
-     
+      <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LowCode/" rel="tag">LowCode</a></li></ul> 
     <div class="md-content animated fadeIn">
-       <p>在 2022 年初投产了第一个 Vite 应用到产线，陆续处理的问题 Case，挑选一些记录下来。</p>
-<p>若改造旧的 webpack 应用，推荐参照 <a target="_blank" rel="noopener" href="https://github.com/originjs/webpack-to-vite/blob/main/README-zh.md">webpack-to-vite</a> 理解更多差异。</p>
-<p>应用代码...</p> 
+       <p>每一个组件可以对外提供：</p>
+<ol>
+<li>抛出可联动的数据</li>
+<li>抛出可调用的方法</li>
+<li>提供可监听的事件</li>
+</ol>
+<h3 id="抛出可联动的数据"><a href="#抛出可联动的数据" class="headerlink" title="抛出可联动的数据"></a>抛出可联动的数据</h3><p>每个组件可以向外抛出数据，应用会收集维护在全局存储，该数据应是可响应式的，在应用顶层通过 Provider...</p> 
       <span class="read-more">
         
-        <a href="/2025/04/15/vite/qa/" title="Vite 疑难杂症" class="posttitle">查看全文</a>
+        <a href="/2025/04/17/lowcode/core/behavior/" title="低代码核心实现 - 组件间数据和行为交互" class="posttitle">查看全文</a>
         <b class="iconfont icon-arrow-right- gradient-text"></b
       ></span>
     </div>
@@ -299,6 +305,66 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.2), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/Vite">
+                  <b>「 </b>VITE<b> 」</b>
+                </a>
+            
+            十二月 15, 2024
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2024/12/15/vite/qa/" title="Vite 疑难杂症" class="posttitle">Vite 疑难杂症</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        5.3k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        5 mins.
+                    </span>
+                
+                <!-- 
+                    <span id="/2024/12/15/vite/qa/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">--</span>
+                    </span>
+                 -->
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Vite/" rel="tag">Vite</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>在 2022 年初投产了第一个 Vite 应用到产线，陆续处理的问题 Case，挑选一些记录下来。</p>
+<p>若改造旧的 webpack 应用，推荐参照 <a target="_blank" rel="noopener" href="https://github.com/originjs/webpack-to-vite/blob/main/README-zh.md">webpack-to-vite</a> 理解更多差异。</p>
+<p>应用代码中，通常不再建议使用 <code>require</code>，应当都替换为 <code>import</code>.</p>
+<p>但是，若为迁移旧代码或其它原因，社区有多款插件可以选用。</p>
+<p>简单的场景推荐：<a target="_blank" rel="noopener" href="https://github.com/wangzongming/vite-plugin-require">https://github.com/wangzongming/vite-plugin-require</a></p>
+<p>如果是三方依赖包的产物中包含了 <code>require()</code> 代...</p>
+            
+            <span class="read-more">
+                
+                <a href="/2024/12/15/vite/qa/" title="Vite 疑难杂症" class="posttitle">查看全文</a>
+                <b class="iconfont icon-arrow-right- gradient-text"></b>
+            </span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -785,63 +851,6 @@ open ~/.gitconfig</code></pre>
             <span class="read-more">
                 
                 <a href="/2021/03/27/react/query/" title="如何管理应用内的请求?" class="posttitle">查看全文</a>
-                <b class="iconfont icon-arrow-right- gradient-text"></b>
-            </span>
-        </div>
-    </div>
-</div>
-
-
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.2), #100e17),
-            url(/img/abc/3741616737466_.pic_hd.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/Babel">
-                  <b>「 </b>BABEL<b> 」</b>
-                </a>
-            
-            三月 26, 2021
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2021/03/26/core-js/babel-compile/" title="Babel 编译误伤 core-js？" class="posttitle">Babel 编译误伤 core-js？</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                        915
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                        1 mins.
-                    </span>
-                
-                <!-- 
-                    <span id="/2021/03/26/core-js/babel-compile/" class="leancloud_visitors" data-flag-title="">
-                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                        <span class="leancloud-visitors-count">--</span>
-                    </span>
-                 -->
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Babel/" rel="tag">Babel</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <p>一个不太常见，但很重要的 core-js bug 讨论：<a target="_blank" rel="noopener" href="https://github.com/zloirock/core-js/issues/514">https://github.com/zloirock/core-js/issues/514</a></p>
-<p>core-js 是 es3 的代码，应当是不需要 babel 编译的，但是，因为某种原因（暂不清楚），babel 会对 core-js 进行处理，并且会影响其中的代码，进而会发现 Symbol 在 Android 6.0 等低版本浏览器的兼容性出问题。</p>
-<p>在移动端页面，小伙伴实际遭遇到了这种现象，依赖的第三方包使用了 Symbol 语法，即使引入全量...</p>
-            
-            <span class="read-more">
-                
-                <a href="/2021/03/26/core-js/babel-compile/" title="Babel 编译误伤 core-js？" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b>
             </span>
         </div>

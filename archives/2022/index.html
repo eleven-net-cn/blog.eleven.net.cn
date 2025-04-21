@@ -60,7 +60,7 @@
                 <div class="content animated fadeIn">
                     <div class="set">
                         <h1 style="text-align: center">时光轴</h1>
-                        <p style="text-align: center">「发表了 18 篇文章」</p>
+                        <p style="text-align: center">「发表了 19 篇文章」</p>
                         <ul class="timeline timeline-centered">
                             
                             
@@ -75,11 +75,41 @@
                                 
                                 <li class="timeline-item">
                                     <div class="timeline-info">
-                                        <span class="gradient-text">四月 15, 2025</span>
+                                        <span class="gradient-text">四月 17, 2025</span>
                                     </div>
                                     <div class="timeline-marker"></div>
                                     <div class="timeline-content">
-                                        <a class="timeline-title" target="_self" href="/2025/04/15/vite/qa/">Vite 疑难杂症</a>
+                                        <a class="timeline-title" target="_self" href="/2025/04/17/lowcode/core/behavior/">低代码核心实现 - 组件间数据和行为交互</a>
+                                        <p>
+                                            每一个组件可以对外提供：
+
+抛出可联动的数据
+抛出可调用的方法
+提供可监听的事件
+
+抛出可联动的数据每个组件可以向外抛出数据，应用会收集维护在全局存储，该数据应是可响应式的，在应用顶层通过 Provider 向下传递，每一个组件都可以读取到。
+组件抛出的数据，在编辑器中拖动配置组件时，为了能够被其它组件使用，需要在该组件中预先定义好待抛出的数据。
+export default defineC...
+                                        </p>
+                                    </div>
+                                </li>
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">十二月 2024</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">十二月 15, 2024</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/2024/12/15/vite/qa/">Vite 疑难杂症</a>
                                         <p>
                                             在 2022 年初投产了第一个 Vite 应用到产线，陆续处理的问题 Case，挑选一些记录下来。
 若改造旧的 webpack 应用，推荐参照 webpack-to-vite 理解更多差异。

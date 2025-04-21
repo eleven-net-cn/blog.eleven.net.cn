@@ -4,13 +4,50 @@
   
     
     <entry>
+      <title>低代码核心实现 - 组件间数据和行为交互</title>
+      <link href="/2025/04/17/lowcode/core/behavior/"/>
+      <url>/2025/04/17/lowcode/core/behavior/</url>
+      
+        <content type="html"><![CDATA[<p>每一个组件可以对外提供：</p><ol><li>抛出可联动的数据</li><li>抛出可调用的方法</li><li>提供可监听的事件</li></ol><h3 id="抛出可联动的数据"><a href="#抛出可联动的数据" class="headerlink" title="抛出可联动的数据"></a>抛出可联动的数据</h3><p>每个组件可以向外抛出数据，应用会收集维护在全局存储，该数据应是可响应式的，在应用顶层通过 Provider 向下传递，每一个组件都可以读取到。</p><p>组件抛出的数据，在编辑器中拖动配置组件时，为了能够被其它组件使用，需要在该组件中预先定义好待抛出的数据。</p><pre><code class="typescript">export default defineComponent&lt;Options&gt;(&#123;  declarations: &#123;    // 此组件可联动的数据    linkState: &#123;      // 定义此组件会向外抛出”已预约人数“的数据      numFollowed: &#123;        label: &#39;已预约人数&#39;,        type: &#39;number&#39;,        default: 0,      &#125;,    &#125;,  &#125;,&#125;);</code></pre><p>组件实现中借助统一提供的函数抛出数据：</p><pre><code class="typescript">const num = await getFollowedNum(); // 示例从接口获取// 抛出函数由全局下发，内部实现时，需关联当前组件的唯一 ID 将其挂载到全局存储syncState(&#123;  numFollowed: num,&#125;);</code></pre><p>而其它组件可通过以下方式使用数据：</p><ol><li><p>自己的配置项，直接绑定来自于某组件下的某数据</p></li><li><p>配置联动目标组件的某项数据，当其”大于、小于、等于“目标值时，联动切换指定的状态</p></li></ol><h3 id="抛出可调用的方法"><a href="#抛出可调用的方法" class="headerlink" title="抛出可调用的方法"></a>抛出可调用的方法</h3><p>组件中定义可调用的方法名，及配置方法时的表单配置。</p><pre><code class="typescript">export default defineComponent&lt;Options&gt; (&#123;  declarations: &#123;    // 可被其它组件调用的方法    methods: [      &#123;        label: &#39;刷新列表&#39;,        name: &#39;refresh&#39;,        form: &#123;          label: &#39;刷新第几页&#39;          placeholder: &#39;请输入刷新第几页，若缺省默认刷新当前页&#39;        &#125;      &#125;    ]  &#125;&#125;)</code></pre><pre><code class="typescript">const refresh = () =&gt; &#123;&#125;;// 示例 Vue 的实现defineExpose(&#123;  refresh,&#125;);</code></pre><h3 id="提供可监听的事件"><a href="#提供可监听的事件" class="headerlink" title="提供可监听的事件"></a>提供可监听的事件</h3><pre><code class="typescript">export default defineComponent&lt;Options&gt;(&#123;  declarations: &#123;    // 可被其它组件监听的事件    events: [      &#123;        label: &#39;加载完成时&#39;,        name: &#39;loaded&#39;,      &#125;,    ],  &#125;,&#125;);</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> LowCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LowCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vite 疑难杂症</title>
-      <link href="/2025/04/15/vite/qa/"/>
-      <url>/2025/04/15/vite/qa/</url>
+      <link href="/2024/12/15/vite/qa/"/>
+      <url>/2024/12/15/vite/qa/</url>
       
         <content type="html"><![CDATA[<p>在 2022 年初投产了第一个 Vite 应用到产线，陆续处理的问题 Case，挑选一些记录下来。</p><p>若改造旧的 webpack 应用，推荐参照 <a href="https://github.com/originjs/webpack-to-vite/blob/main/README-zh.md">webpack-to-vite</a> 理解更多差异。</p><h2 id="应用中需要支持-require-语法"><a href="#应用中需要支持-require-语法" class="headerlink" title="应用中需要支持 require 语法"></a>应用中需要支持 <code>require</code> 语法</h2><p>应用代码中，通常不再建议使用 <code>require</code>，应当都替换为 <code>import</code>.</p><p>但是，若为迁移旧代码或其它原因，社区有多款插件可以选用。</p><p>简单的场景推荐：<a href="https://github.com/wangzongming/vite-plugin-require">https://github.com/wangzongming/vite-plugin-require</a></p><p>如果是三方依赖包的产物中包含了 <code>require()</code> 代码呢？</p><p>这种场景更加复杂一些，在 esbuild 预构建时可能遇到模块导出的值不符合预期，在调研对比多个社区方案后，推荐考虑使用以下插件：</p><p><a href="https://github.com/vite-plugin/vite-plugin-commonjs">https://github.com/vite-plugin/vite-plugin-commonjs</a></p><h2 id="lib-模式编译，如何引入-polyfill？"><a href="#lib-模式编译，如何引入-polyfill？" class="headerlink" title="lib 模式编译，如何引入 polyfill？"></a>lib 模式编译，如何引入 polyfill？</h2><p>在打包 App 应用时可以依靠 <a href="https://github.com/vitejs/vite/tree/main/packages/plugin-legacy">@vitejs/plugin-legacy</a> 处理 Polyfill，而 lib 模式编译类库时，不会引入 Polyfill。</p><p>推荐使用 Rollup 插件，通过 Babel 在最后阶段再处理 Polyfill。</p><pre><code class="typescript">import &#123; defineConfig &#125; from &#39;vite&#39;;import &#123; getBabelOutputPlugin &#125; from &#39;@rollup/plugin-babel&#39;;export default defineConfig(&#123;  build: &#123;    rollupOptions: &#123;      plugins: [        /**         * Running Babel on the generated code:         *  https://github.com/rollup/plugins/blob/master/packages/babel/README.md#running-babel-on-the-generated-code         *         * Transforming ES6+ syntax to ES5 is not supported yet, there are two ways to do:         *  https://github.com/evanw/esbuild/issues/1010#issuecomment-803865232         * We choose to run Babel on the output files after esbuild.         *         * @vitejs/plugin-legacy does not support library mode:         *  https://github.com/vitejs/vite/issues/1639         */        getBabelOutputPlugin(&#123;          allowAllFormats: true,          presets: [            [              &#39;@babel/preset-env&#39;,              &#123;                useBuiltIns: false,                exclude: [&#39;transform-typeof-symbol&#39;],                modules: false,              &#125;,            ],          ],          plugins: [            [              &#39;@babel/plugin-transform-runtime&#39;,              &#123;                corejs: false,                // version: require(&#39;@babel/runtime&#39;).version,              &#125;,            ],          ].filter(Boolean),        &#125;),      ],    &#125;,  &#125;,&#125;);</code></pre><h2 id="Vite-lib-模式打包时，静态资源会被内联（官方解释），如何处理？"><a href="#Vite-lib-模式打包时，静态资源会被内联（官方解释），如何处理？" class="headerlink" title="Vite lib 模式打包时，静态资源会被内联（官方解释），如何处理？"></a>Vite lib 模式打包时，静态资源会被内联（<a href="https://cn.vite.dev/config/build-options.html#build-assetsinlinelimit">官方解释</a>），如何处理？</h2><p>当我们使用 Vite 编译组件、类库时，此问题暴露尤其明显。例如组件中使用的某几张图片，留待使用该组件的应用打包应属最佳，否则，大量的图片被内联在 js 代码中，会严重影响加载速度。</p><p>在我们的场景下此问题十分重要，社区内没有可使用的方案，layne 同学编写了以下插件完美解决问题。</p><p><a href="https://github.com/laynezh/vite-plugin-lib-assets">https://github.com/laynezh/vite-plugin-lib-assets</a></p><ul><li><code>iife</code> 资源路径转拼接指定的 <code>publicUrl</code></li><li><code>esm</code> 转换为相对路径引入</li><li><code>commonjs</code> 转换为相对路径引入</li></ul><pre><code class="typescript">import &#123; defineConfig &#125; from &#39;vite&#39;;import assetsPlugin from &#39;@laynezh/vite-plugin-lib-assets&#39;;export default defineConfig(&#123;  plugins: [    assetsPlugin(&#123;      name: &#39;[name].[contenthash:8].[ext]&#39;,      limit: 1024 * 8,      publicUrl: undefined,    &#125;),  ],&#125;);</code></pre><h2 id="commonjs-模块中引用的资源应原样输出"><a href="#commonjs-模块中引用的资源应原样输出" class="headerlink" title="commonjs 模块中引用的资源应原样输出"></a>commonjs 模块中引用的资源应原样输出</h2><pre><code class="typescript">import &#123; defineConfig &#125; from &#39;vite&#39;;export default defineConfig(&#123;  build: &#123;    commonjsOptions: &#123;      /**       * https://github.com/rollup/plugins/tree/master/packages/commonjs#requirereturnsdefault       *       * require(&#39;./images/123.png&#39;) =&gt; import Img123 from &#39;./images/123.png&#39;       *       * and &#39;./images/123.png&#39; 会被 vite 处理成 base64 格式实现载入       */      requireReturnsDefault(id) &#123;        const [pureId] = id.split(&#39;?&#39;, 2);        return commonjsAssetsFilter(pureId);      &#125;,    &#125;,  &#125;,&#125;);</code></pre><h2 id="修改-lib-模式输出的样式文件名"><a href="#修改-lib-模式输出的样式文件名" class="headerlink" title="修改 lib 模式输出的样式文件名"></a>修改 lib 模式输出的样式文件名</h2><p>不同于修改 js 文件输出的名称，样式文件需要不一样的处理方式。</p><pre><code class="typescript">import defineConfig from &#39;vite&#39;;export default defineConfig(&#123;  build: &#123;    rollupOptions: &#123;      output: &#123;        assetFileNames(assetInfo) &#123;          // https://github.com/vitejs/vite/issues/4863          if (!ignoreStyles &amp;&amp; assetInfo.name === &#39;style.css&#39;) &#123;            return `$&#123;fileName&#125;.css`;          &#125;          return assetInfo.name;        &#125;,      &#125;,    &#125;,  &#125;,&#125;);</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> Vite </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vite </tag>
+            
+        </tags>
       
     </entry>
     

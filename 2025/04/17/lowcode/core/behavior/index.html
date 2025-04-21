@@ -5,18 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>如何管理应用内的请求? - Eleven 的博客</title>
+    <title>低代码核心实现 - 组件间数据和行为交互 - Eleven 的博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Eleven,前端,"> 
-    <meta name="description" content="如何管理应用内的接口请求？
-这是一个值得讨论的问题，涉及如下若干方面：
+    <meta name="description" content="每一个组件可以对外提供：
 
-避免多次调用同一个请求（不同页面或不同组件）？
-失败了自动重试？
-切换浏览器 tab 返回页面时，自动发送请求更新数据？
-列,"> 
+抛出可联动的数据
+抛出可调用的方法
+提供可监听的事件
+
+抛出可联动的数据每个组件可以向外抛出数据，应用会收集维护在全局存储，该数据应是可响应式的，在应用顶层通过 Prov,"> 
     <meta name="author" content="eleven-net-cn"> 
     <link rel="alternative" href="atom.xml" title="Eleven 的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/abc/eleven-net-cn.jpeg"> 
@@ -70,7 +70,7 @@
     />
     <div id="play-icon" title="播放/暂停" class="iconfont icon-play"></div>
     <div id="play-next" title="下一曲" class="iconfont icon-next icon-arrow-right- next"></div>
-    <h3 class="subtitle">如何管理应用内的请求?</h3>
+    <h3 class="subtitle">低代码核心实现 - 组件间数据和行为交互</h3>
     <div class="social">
       <!--        <div class="like-icon">-->
       <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -97,29 +97,29 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/React"><b>「
-                    </b>REACT<b> 」</b></a>
+                <a href="/categories/LowCode"><b>「
+                    </b>LOWCODE<b> 」</b></a>
                 
-                三月 27, 2021
+                四月 17, 2025
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/03/27/react/query/" title="如何管理应用内的请求?" class="">如何管理应用内的请求?</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2025/04/17/lowcode/core/behavior/" title="低代码核心实现 - 组件间数据和行为交互" class="">低代码核心实现 - 组件间数据和行为交互</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    800
+                    2k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    1 mins.
+                    2 mins.
                 </span>
                 
                 
-                <span id="/2021/03/27/react/query/" class="leancloud_visitors" data-flag-title="如何管理应用内的请求?">
+                <span id="/2025/04/17/lowcode/core/behavior/" class="leancloud_visitors" data-flag-title="低代码核心实现 - 组件间数据和行为交互">
                     <b class="iconfont icon-read"></b> <i>阅读次数</i>
                     <span class="leancloud-visitors-count">--</span>
                 </span>
@@ -127,7 +127,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LowCode/" rel="tag">LowCode</a></li></ul>
             
         </div>
     </div>
@@ -148,23 +148,74 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>如何管理应用内的接口请求？</p>
-<p>这是一个值得讨论的问题，涉及如下若干方面：</p>
+            <p>每一个组件可以对外提供：</p>
 <ol>
-<li>避免多次调用同一个请求（不同页面或不同组件）？</li>
-<li>失败了自动重试？</li>
-<li>切换浏览器 tab 返回页面时，自动发送请求更新数据？</li>
-<li>列表滚动位置恢复？</li>
-<li>…….</li>
+<li>抛出可联动的数据</li>
+<li>抛出可调用的方法</li>
+<li>提供可监听的事件</li>
 </ol>
-<p>这些问题可以在以下几个社区方案里找到答案（react-query 似乎更胜一筹）：</p>
-<ul>
-<li>reacrt-query：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/261146977">https://zhuanlan.zhihu.com/p/261146977</a></li>
-<li>swr：<a target="_blank" rel="noopener" href="https://swr.vercel.app/zh-CN">https://swr.vercel.app/zh-CN</a></li>
-<li>ahooks/useRequest：<a target="_blank" rel="noopener" href="https://ahooks.js.org/zh-CN/hooks/async">https://ahooks.js.org/zh-CN/hooks/async</a></li>
-</ul>
-<p>许多人会将多处使用的接口数据，存储到 Redux 等全局状态去管理，以减少重复的请求。理论上来说这是不合理的，状态管理会因此而变得混乱、臃肿，也给代码编写带来了额外的负担。</p>
-<p>使用以上方案后，类库内部自动管理接口数据的状态，暂且称之为“服务端状态”，在任意的页面、组件都可以保持相同的 Hooks 方式调用，而全局只会发送一次请求，因此，状态管理需要存储的数据可以大幅减少。除此之外，还有自动重试、切屏更新数据等强大的封装功能，是日常应用开发的利器。</p>
+<h3 id="抛出可联动的数据"><a href="#抛出可联动的数据" class="headerlink" title="抛出可联动的数据"></a>抛出可联动的数据</h3><p>每个组件可以向外抛出数据，应用会收集维护在全局存储，该数据应是可响应式的，在应用顶层通过 Provider 向下传递，每一个组件都可以读取到。</p>
+<p>组件抛出的数据，在编辑器中拖动配置组件时，为了能够被其它组件使用，需要在该组件中预先定义好待抛出的数据。</p>
+<pre><code class="typescript">export default defineComponent&lt;Options&gt;(&#123;
+  declarations: &#123;
+    // 此组件可联动的数据
+    linkState: &#123;
+      // 定义此组件会向外抛出”已预约人数“的数据
+      numFollowed: &#123;
+        label: &#39;已预约人数&#39;,
+        type: &#39;number&#39;,
+        default: 0,
+      &#125;,
+    &#125;,
+  &#125;,
+&#125;);</code></pre>
+<p>组件实现中借助统一提供的函数抛出数据：</p>
+<pre><code class="typescript">const num = await getFollowedNum(); // 示例从接口获取
+
+// 抛出函数由全局下发，内部实现时，需关联当前组件的唯一 ID 将其挂载到全局存储
+syncState(&#123;
+  numFollowed: num,
+&#125;);</code></pre>
+<p>而其它组件可通过以下方式使用数据：</p>
+<ol>
+<li><p>自己的配置项，直接绑定来自于某组件下的某数据</p>
+</li>
+<li><p>配置联动目标组件的某项数据，当其”大于、小于、等于“目标值时，联动切换指定的状态</p>
+</li>
+</ol>
+<h3 id="抛出可调用的方法"><a href="#抛出可调用的方法" class="headerlink" title="抛出可调用的方法"></a>抛出可调用的方法</h3><p>组件中定义可调用的方法名，及配置方法时的表单配置。</p>
+<pre><code class="typescript">export default defineComponent&lt;Options&gt; (&#123;
+  declarations: &#123;
+    // 可被其它组件调用的方法
+    methods: [
+      &#123;
+        label: &#39;刷新列表&#39;,
+        name: &#39;refresh&#39;,
+        form: &#123;
+          label: &#39;刷新第几页&#39;
+          placeholder: &#39;请输入刷新第几页，若缺省默认刷新当前页&#39;
+        &#125;
+      &#125;
+    ]
+  &#125;
+&#125;)</code></pre>
+<pre><code class="typescript">const refresh = () =&gt; &#123;&#125;;
+
+// 示例 Vue 的实现
+defineExpose(&#123;
+  refresh,
+&#125;);</code></pre>
+<h3 id="提供可监听的事件"><a href="#提供可监听的事件" class="headerlink" title="提供可监听的事件"></a>提供可监听的事件</h3><pre><code class="typescript">export default defineComponent&lt;Options&gt;(&#123;
+  declarations: &#123;
+    // 可被其它组件监听的事件
+    events: [
+      &#123;
+        label: &#39;加载完成时&#39;,
+        name: &#39;loaded&#39;,
+      &#125;,
+    ],
+  &#125;,
+&#125;);</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" preload="auto" controls="controls"
@@ -212,13 +263,9 @@
             <div class="post-nav">
                 <hr>
                 
-                    <div class="post-nav-item">上一篇：<a href="/2021/03/28/video/live/" rel="prev" 
-                        title="「转」H5直播流原理与实践方案">「转」H5直播流原理与实践方案
-                      </a></div>
                 
-                
-                    <div class="post-nav-item">下一篇：<a href="/2021/03/26/core-js/babel-compile/" rel="next" 
-                        title="Babel 编译误伤 core-js？">Babel 编译误伤 core-js？</a></div>
+                    <div class="post-nav-item">下一篇：<a href="/2024/12/15/vite/qa/" rel="next" 
+                        title="Vite 疑难杂症">Vite 疑难杂症</a></div>
                                 
             </div>   
                         
@@ -267,6 +314,13 @@
             </div>
             
             
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%9B%E5%87%BA%E5%8F%AF%E8%81%94%E5%8A%A8%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">1.</span> <span class="toc-text">抛出可联动的数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%9B%E5%87%BA%E5%8F%AF%E8%B0%83%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">抛出可调用的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BE%9B%E5%8F%AF%E7%9B%91%E5%90%AC%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">提供可监听的事件</span></a></li></ol>
+                </div>
+            </div>
             
             
         </div>
