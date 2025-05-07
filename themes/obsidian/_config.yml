@@ -41,13 +41,15 @@ version: '1.4.5'
 
 # Menu setting | format = title_name: link_url
 menu:
-  GitHub: 'https://github.com/eleven-net-cn'
+  GitHub: https://github.com/eleven-net-cn
+  CreateApp: https://github.com/eleven-net-cn/create-app
   FE-Ground: https://fe-ground.eleven.net.cn/
   效率工具: 
     library-starter: https://github.com/eleven-net-cn/library-starter
     '@eleven.fe/cra-template-typescript': https://www.npmjs.com/package/@eleven.fe/cra-template-typescript
     '@eleven.fe/cra-template': https://www.npmjs.com/package/@eleven.fe/cra-template
   通用类库:
+    'filesize': https://github.com/eleven-net-cn/filesize
     '@eleven.fe/reset.css': https://www.npmjs.com/package/@eleven.fe/reset.css
     '@eleven.fe/ball-collision': https://www.npmjs.com/package/@eleven.fe/ball-collision
   Webpack专题: 'https://webpack.eleven.net.cn/'
