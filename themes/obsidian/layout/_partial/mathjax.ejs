@@ -1,6 +1,7 @@
 <% if (theme.mathjax){ %>
-<script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/mathjax/2.7.6/MathJax.js">
+<!-- <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/mathjax/2.7.6/MathJax.js"> -->
 </script>
+<%- js(['js/MathJax.min.js'])%>
 <script>
   MathJax.Hub.Config({
     "HTML-CSS": {

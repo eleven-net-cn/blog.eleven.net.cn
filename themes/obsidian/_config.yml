@@ -76,7 +76,7 @@ icp_link: https://beian.miit.gov.cn
 TOC: true
 
 # 首页封面大图
-welcome_cover: /img/abc/3611616737156_.jpg
+# welcome_cover: /img/abc/3611616737156_.jpg
 
 # 默认的文章头图
 article_cover: /img/welcome-cover.jpg
@@ -94,14 +94,14 @@ avatar: /img/abc/eleven-net-cn.jpeg
 scrollbar: false
 
 # Website keywords used for SEO
-keywords: Eleven,前端
+keywords: Eleven,eleven-net-cn,Frontend
 
 # Website slogans
 # descriptionOne: '人生没有重启键，一去不回头。'
 # descriptionTwo: '劝君莫惜金缕衣，劝君惜取少年时。'
 
 # If you use google analytics, please fill in the ID
-google_analytics: 'UA-149874671-1'
+# google_analytics: 'UA-149874671-1'
 
 # Website favicon
 favicon: /img/abc/eleven-net-cn.jpeg
@@ -119,14 +119,14 @@ autoplay: true
 
 # default mp3 file
 mp3:
-  - statics/平凡之路.mp3
+  - statics/英雄的黎明.mp3
   - statics/出埃及记.mp3
   - statics/天地孤影任我行.mp3
-  - statics/英雄的黎明.mp3
   - statics/市集.mp3
   - statics/知音.mp3
   - statics/Beautiful In White.mp3
   - statics/chengdu.mp3
+  - statics/平凡之路.mp3
 
 # ---------------------------------------------------------------
 # Plugins
@@ -214,18 +214,18 @@ mathjax: true
 header_html: ''
 
 # custom footer HTML
-footer_html: '
-<!-- 例：百度统计 -->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?your_code";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-'
+# footer_html: '
+# <!-- 例：百度统计 -->
+# <script>
+# var _hmt = _hmt || [];
+# (function() {
+#   var hm = document.createElement("script");
+#   hm.src = "https://hm.baidu.com/hm.js?your_code";
+#   var s = document.getElementsByTagName("script")[0]; 
+#   s.parentNode.insertBefore(hm, s);
+# })();
+# </script>
+# '
 # Show previous post and next post in post footer if exists
 # Available values: true | false
 post_navigation: true
