@@ -76,7 +76,7 @@ icp_link: https://beian.miit.gov.cn
 TOC: true
 
 # 首页封面大图
-# welcome_cover: /img/abc/3611616737156_.jpg
+welcome_cover: /img/abc/3611616737156_.jpg
 
 # 默认的文章头图
 article_cover: /img/welcome-cover.jpg
