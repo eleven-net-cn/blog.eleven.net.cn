@@ -52,7 +52,7 @@ menu:
     'filesize': https://github.com/eleven-net-cn/filesize
     '@eleven.fe/reset.css': https://www.npmjs.com/package/@eleven.fe/reset.css
     '@eleven.fe/ball-collision': https://www.npmjs.com/package/@eleven.fe/ball-collision
-  Webpack专题: 'https://webpack.eleven.net.cn/'
+  Webpack Guide: 'https://webpack.eleven.net.cn/'
   时光轴: /archives
 
 # Page custom titles
