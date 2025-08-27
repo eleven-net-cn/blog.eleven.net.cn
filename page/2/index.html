@@ -257,20 +257,20 @@
   <div id="post0" class="else">
     <p class="animated fadeInDown">
       
-      <a href="/categories/Babel"
-        ><b>「 </b>BABEL<b> 」</b></a
+      <a href="/categories/React"
+        ><b>「 </b>REACT<b> 」</b></a
       >
-       三月 26, 2021
+       三月 27, 2021
     </p>
     <h3 class="post-title animated fadeInDown">
-      <a href="/2021/03/26/core-js/babel-compile/" title="Babel 编译误伤 core-js？" class="posttitle">Babel 编译误伤 core-js？</a>
+      <a href="/2021/03/27/react/query/" title="如何管理应用内的请求?" class="posttitle">如何管理应用内的请求?</a>
     </h3>
     
     <p class="post-count animated fadeInDown">
       
       <span>
         <b class="iconfont icon-text2"></b> <i>文章字数</i>
-        915
+        800
       </span>
        
       
@@ -281,7 +281,7 @@
        
       <!-- 
       <span
-        id="/2021/03/26/core-js/babel-compile/"
+        id="/2021/03/27/react/query/"
         class="leancloud_visitors"
         data-flag-title=""
       >
@@ -292,13 +292,18 @@
       <!-- 是统计网站总的访问量，而非某篇文章 -->
       <!--  -->
     </p>
-      <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Babel/" rel="tag">Babel</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Webpack/" rel="tag">Webpack</a></li></ul> 
+      <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/React/" rel="tag">React</a></li></ul> 
     <div class="md-content animated fadeIn">
-       <p>一个不太常见，但很重要的 core-js bug 讨论：<a target="_blank" rel="noopener" href="https://github.com/zloirock/core-js/issues/514">https://github.com/zloirock/core-js/issues/514</a></p>
-<p>core-js 是 es3 的代码，应当是不需要 ...</p> 
+       <p>如何管理应用内的接口请求？</p>
+<p>这是一个值得讨论的问题，涉及如下若干方面：</p>
+<ol>
+<li>避免多次调用同一个请求（不同页面或不同组件）？</li>
+<li>失败了自动重试？</li>
+<li>切换浏览器 tab 返回页面时，自动发送请求更新数据？</li>
+<li>列表...</li></ol> 
       <span class="read-more">
         
-        <a href="/2021/03/26/core-js/babel-compile/" title="Babel 编译误伤 core-js？" class="posttitle">查看全文</a>
+        <a href="/2021/03/27/react/query/" title="如何管理应用内的请求?" class="posttitle">查看全文</a>
         <b class="iconfont icon-arrow-right- gradient-text"></b
       ></span>
     </div>
@@ -320,6 +325,74 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.2), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/React">
+                  <b>「 </b>REACT<b> 」</b>
+                </a>
+            
+            三月 27, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/03/27/react/query/" title="如何管理应用内的请求?" class="posttitle">如何管理应用内的请求?</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        800
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                <!-- 
+                    <span id="/2021/03/27/react/query/" class="leancloud_visitors" data-flag-title="">
+                        <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                        <span class="leancloud-visitors-count">--</span>
+                    </span>
+                 -->
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>如何管理应用内的接口请求？</p>
+<p>这是一个值得讨论的问题，涉及如下若干方面：</p>
+<ol>
+<li>避免多次调用同一个请求（不同页面或不同组件）？</li>
+<li>失败了自动重试？</li>
+<li>切换浏览器 tab 返回页面时，自动发送请求更新数据？</li>
+<li>列表滚动位置恢复？</li>
+<li>…….</li>
+</ol>
+<p>这些问题可以在以下几个社区方案里找到答案（react-query 似乎更胜一筹）：</p>
+<ul>
+<li>reacrt-query：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/261146977">https://zhuanlan.zhihu.com/p/261146977</a></li>
+<li>swr：<a target="_blank" rel="noopener" href="https://swr.vercel.app/zh-CN">https://swr.vercel.app/zh-CN</a></li>
+<li>ahooks/useRequest...</li></ul>
+            
+            <span class="read-more">
+                
+                <a href="/2021/03/27/react/query/" title="如何管理应用内的请求?" class="posttitle">查看全文</a>
+                <b class="iconfont icon-arrow-right- gradient-text"></b>
+            </span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
