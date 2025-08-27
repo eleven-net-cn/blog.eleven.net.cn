@@ -809,6 +809,103 @@ declare module '*.avif?*' {
 - **WebP**: 通常比 PNG 小 25-35%
 - **AVIF**: 通常比 WebP 小 20-30%
 
+## 图片压缩的选择
+
+imagetools 可以压缩图片体积，但是，针对不同格式的图片，适用的压缩方式（无损压缩、有损压缩）、压缩比例等各不相同，并且无法对项目内的所有图片（import 导入、非 import 导入）进行压缩。
+
+因此，更推荐搭配其它图片压缩插件一起工作，图片压缩交由其它插件负责，imagetools 负责转格式等更多功能。
+
+在诸多可用方案中，[vite-plugin-image-optimizer](https://github.com/FatehAK/vite-plugin-image-optimizer) 工作效果不错。
+
+```ts
+import { defineConfig } from 'vite'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+
+export default defineConfig({
+  plugins: [
+    /**
+     * 处理图片的格式转换（PNG/JPG → WebP/AVIF）、尺寸裁剪等
+     *
+     * 虽然可以压缩图片，但仅限于 import 导入的资源图片，因此，不启用压缩功能，而留给 ViteImageOptimizer 统一压缩
+     */
+    imagetools({
+      // 每张图片默认生效的指令，在 import query 拼接默认参数
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      defaultDirectives: (url, metadata) => {
+        const params = new URLSearchParams({
+          progressive: 'true',
+        })
+
+        // 根据文件路径，决定是否批量开启转格式等
+        // const pathname = url.pathname.toLowerCase()
+
+        return params
+      },
+    }),
+    /**
+     * 处理所有图片的压缩优化
+     *
+     * 在编译后处理，对 JS/CSS 中各类方式使用的所有图片生效
+     */
+    ViteImageOptimizer({
+      test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
+      includePublic: true,
+      // include: ['src/pages/party/lottery'], // 仅处理 lottery 目录
+      // 排除其他目录，减少内存占用
+      exclude: [
+        // 'src/pages/activity', // 排除 activity 目录
+        'node_modules', // 排除 node_modules
+      ],
+      // 主格式优化配置 - 在不影响原图质量的前提下进行最佳压缩
+      png: {
+        // PNG 优化：使用有损压缩获得更好的压缩比
+        quality: 90, // 90% 质量，视觉无损
+        compressionLevel: 9, // 最高压缩级别 (0-9)
+        progressive: true, // 渐进式加载，提升用户体验
+        adaptiveFiltering: true, // 自适应过滤，提高压缩效率
+      },
+      jpeg: {
+        // JPEG 优化：85% 质量是视觉无损的最佳平衡点
+        quality: 85, // 提高质量确保无损（若有影响再提高到 95 视觉无损）
+        progressive: true, // 渐进式加载
+        mozjpeg: true, // 使用 mozjpeg 编码器获得更好的压缩
+      },
+      jpg: {
+        // JPG 与 JPEG 使用相同配置
+        quality: 85,
+        progressive: true,
+        mozjpeg: true,
+      },
+      tiff: {
+        // TIFF 优化：保持最高质量
+        quality: 90, // 最高质量
+        compression: 'lzw', // LZW 无损压缩
+      },
+      gif: {
+        // GIF 优化：保持动画和透明度，不减少颜色
+        colors: 256, // 保持最大颜色数，不减少颜色
+      },
+      webp: {
+        // WebP 优化：使用有损压缩获得更好的压缩比
+        quality: 85, // 85% 质量，视觉无损
+        effort: 6, // 压缩努力级别 (0-6)
+        nearLossless: false, // 不使用近无损模式
+        smartSubsample: true, // 智能子采样
+      },
+      avif: {
+        // AVIF 优化：使用有损压缩获得更好的压缩比
+        quality: 80, // 80% 质量，视觉无损
+        effort: 9, // 最高压缩努力级别
+        chromaSubsampling: '4:2:0', // 色度子采样
+      },
+      // 缓存配置
+      cache: true,
+      cacheLocation: 'node_modules/.cache/vite-plugin-image-optimizer',
+    }),
+  ],
+});
+```
+
 ## 📚 相关链接
 
 - [ImageTools 官方文档](https://github.com/JonasKruckenberg/imagetools)
