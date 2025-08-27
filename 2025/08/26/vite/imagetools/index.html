@@ -107,13 +107,13 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    26k
+                    29k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    24 mins.
+                    27 mins.
                 </span>
                 
                 
@@ -717,6 +717,95 @@ declare module &#39;*.avif?*&#39; &#123;
 <li><strong>WebP</strong>: 通常比 PNG 小 25-35%</li>
 <li><strong>AVIF</strong>: 通常比 WebP 小 20-30%</li>
 </ul>
+<h2 id="图片压缩的选择"><a href="#图片压缩的选择" class="headerlink" title="图片压缩的选择"></a>图片压缩的选择</h2><p>imagetools 可以压缩图片体积，但是，针对不同格式的图片，适用的压缩方式（无损压缩、有损压缩）、压缩比例等各不相同，并且无法对项目内的所有图片（import 导入、非 import 导入）进行压缩。</p>
+<p>因此，更推荐搭配其它图片压缩插件一起工作，图片压缩交由其它插件负责，imagetools 负责转格式等更多功能。</p>
+<p>在诸多可用方案中，<a target="_blank" rel="noopener" href="https://github.com/FatehAK/vite-plugin-image-optimizer">vite-plugin-image-optimizer</a> 工作效果不错。</p>
+<pre><code class="ts">import &#123; defineConfig &#125; from &#39;vite&#39;
+import &#123; ViteImageOptimizer &#125; from &#39;vite-plugin-image-optimizer&#39;
+
+export default defineConfig(&#123;
+  plugins: [
+    /**
+     * 处理图片的格式转换（PNG/JPG → WebP/AVIF）、尺寸裁剪等
+     *
+     * 虽然可以压缩图片，但仅限于 import 导入的资源图片，因此，不启用压缩功能，而留给 ViteImageOptimizer 统一压缩
+     */
+    imagetools(&#123;
+      // 每张图片默认生效的指令，在 import query 拼接默认参数
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      defaultDirectives: (url, metadata) =&gt; &#123;
+        const params = new URLSearchParams(&#123;
+          progressive: &#39;true&#39;,
+        &#125;)
+
+        // 根据文件路径，决定是否批量开启转格式等
+        // const pathname = url.pathname.toLowerCase()
+
+        return params
+      &#125;,
+    &#125;),
+    /**
+     * 处理所有图片的压缩优化
+     *
+     * 在编译后处理，对 JS/CSS 中各类方式使用的所有图片生效
+     */
+    ViteImageOptimizer(&#123;
+      test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
+      includePublic: true,
+      // include: [&#39;src/pages/party/lottery&#39;], // 仅处理 lottery 目录
+      // 排除其他目录，减少内存占用
+      exclude: [
+        // &#39;src/pages/activity&#39;, // 排除 activity 目录
+        &#39;node_modules&#39;, // 排除 node_modules
+      ],
+      // 主格式优化配置 - 在不影响原图质量的前提下进行最佳压缩
+      png: &#123;
+        // PNG 优化：使用有损压缩获得更好的压缩比
+        quality: 90, // 90% 质量，视觉无损
+        compressionLevel: 9, // 最高压缩级别 (0-9)
+        progressive: true, // 渐进式加载，提升用户体验
+        adaptiveFiltering: true, // 自适应过滤，提高压缩效率
+      &#125;,
+      jpeg: &#123;
+        // JPEG 优化：85% 质量是视觉无损的最佳平衡点
+        quality: 85, // 提高质量确保无损（若有影响再提高到 95 视觉无损）
+        progressive: true, // 渐进式加载
+        mozjpeg: true, // 使用 mozjpeg 编码器获得更好的压缩
+      &#125;,
+      jpg: &#123;
+        // JPG 与 JPEG 使用相同配置
+        quality: 85,
+        progressive: true,
+        mozjpeg: true,
+      &#125;,
+      tiff: &#123;
+        // TIFF 优化：保持最高质量
+        quality: 90, // 最高质量
+        compression: &#39;lzw&#39;, // LZW 无损压缩
+      &#125;,
+      gif: &#123;
+        // GIF 优化：保持动画和透明度，不减少颜色
+        colors: 256, // 保持最大颜色数，不减少颜色
+      &#125;,
+      webp: &#123;
+        // WebP 优化：使用有损压缩获得更好的压缩比
+        quality: 85, // 85% 质量，视觉无损
+        effort: 6, // 压缩努力级别 (0-6)
+        nearLossless: false, // 不使用近无损模式
+        smartSubsample: true, // 智能子采样
+      &#125;,
+      avif: &#123;
+        // AVIF 优化：使用有损压缩获得更好的压缩比
+        quality: 80, // 80% 质量，视觉无损
+        effort: 9, // 最高压缩努力级别
+        chromaSubsampling: &#39;4:2:0&#39;, // 色度子采样
+      &#125;,
+      // 缓存配置
+      cache: true,
+      cacheLocation: &#39;node_modules/.cache/vite-plugin-image-optimizer&#39;,
+    &#125;),
+  ],
+&#125;);</code></pre>
 <h2 id="📚-相关链接"><a href="#📚-相关链接" class="headerlink" title="📚 相关链接"></a>📚 相关链接</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/JonasKruckenberg/imagetools">ImageTools 官方文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://sharp.pixelplumbing.com/">Sharp 文档</a></li>
@@ -825,7 +914,7 @@ declare module &#39;*.avif?*&#39; &#123;
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%96-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">📖 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%99%EF%B8%8F-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">⚙️ 插件配置参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#include-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E8%A7%84%E5%88%99"><span class="toc-number">2.1.</span> <span class="toc-text">include - 文件包含规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exclude-%E6%96%87%E4%BB%B6%E6%8E%92%E9%99%A4%E8%A7%84%E5%88%99"><span class="toc-number">2.2.</span> <span class="toc-text">exclude - 文件排除规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#defaultDirectives-%E9%BB%98%E8%AE%A4%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4"><span class="toc-number">2.3.</span> <span class="toc-text">defaultDirectives - 默认处理指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#removeMetadata-%E7%A7%BB%E9%99%A4%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">2.4.</span> <span class="toc-text">removeMetadata - 移除元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#namedExports-%E5%91%BD%E5%90%8D%E5%AF%BC%E5%87%BA"><span class="toc-number">2.5.</span> <span class="toc-text">namedExports - 命名导出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">🎯 查询参数详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%BA%E5%AF%B8%E6%8E%A7%E5%88%B6%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.</span> <span class="toc-text">尺寸控制参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">格式转换参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E8%A7%89%E6%95%88%E6%9E%9C%E5%8F%82%E6%95%B0"><span class="toc-number">3.3.</span> <span class="toc-text">视觉效果参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%8F%82%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">高级参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%A4-%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">📤 输出格式详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E8%BE%93%E5%87%BA%EF%BC%88URL-%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">默认输出（URL 字符串）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-srcset-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87%E9%9B%86"><span class="toc-number">4.2.</span> <span class="toc-text">as&#x3D;srcset - 响应式图片集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-metadata-%E5%9B%BE%E7%89%87%E5%85%83%E4%BF%A1%E6%81%AF"><span class="toc-number">4.3.</span> <span class="toc-text">as&#x3D;metadata - 图片元信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-img-%E5%9B%BE%E7%89%87%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.4.</span> <span class="toc-text">as&#x3D;img - 图片对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-picture-Picture-%E5%85%83%E7%B4%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">4.5.</span> <span class="toc-text">as&#x3D;picture - Picture 元素数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%80-%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">5.</span> <span class="toc-text">🚀 实际使用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80-WebP-%E8%BD%AC%E6%8D%A2"><span class="toc-number">5.1.</span> <span class="toc-text">1. 基础 WebP 转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E5%83%8F"><span class="toc-number">5.2.</span> <span class="toc-text">2. 响应式图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%9A%E6%A0%BC%E5%BC%8F%E6%94%AF%E6%8C%81"><span class="toc-number">5.3.</span> <span class="toc-text">3. 多格式支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B8%90%E8%BF%9B%E5%BC%8F-WebP-%E5%9B%BE%E5%83%8F"><span class="toc-number">5.4.</span> <span class="toc-text">4. 渐进式 WebP 图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%83%8C%E6%99%AF%E5%9B%BE%E5%83%8F%E4%BC%98%E5%8C%96"><span class="toc-number">5.5.</span> <span class="toc-text">5. 背景图像优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%9APicture-%E5%85%83%E7%B4%A0"><span class="toc-number">5.6.</span> <span class="toc-text">6. 高级用法：Picture 元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E6%80%A7%E8%83%BD%E5%BD%B1%E5%93%8D%E5%AF%B9%E6%AF%94"><span class="toc-number">6.</span> <span class="toc-text">📊 性能影响对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E5%AF%B9%E6%AF%94%EF%BC%88%E4%BB%A5-1MB-%E5%8E%9F%E5%A7%8B-JPEG-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">文件大小对比（以 1MB 原始 JPEG 为例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%97%B6%E9%97%B4%E5%BD%B1%E5%93%8D"><span class="toc-number">6.2.</span> <span class="toc-text">构建时间影响</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">7.</span> <span class="toc-text">💡 最佳实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E5%9B%BE%E7%89%87"><span class="toc-number">7.1.</span> <span class="toc-text">1. 选择合适的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B4%A8%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-number">7.2.</span> <span class="toc-text">2. 质量设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E5%83%8F"><span class="toc-number">7.3.</span> <span class="toc-text">3. 响应式图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%99%8D%E7%BA%A7%E6%96%B9%E6%A1%88"><span class="toc-number">7.4.</span> <span class="toc-text">4. 降级方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8E%A8%E8%8D%90"><span class="toc-number">7.5.</span> <span class="toc-text">5. 基础配置推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%8C%89%E7%94%A8%E9%80%94%E5%88%86%E7%B1%BB%E5%A4%84%E7%90%86"><span class="toc-number">7.6.</span> <span class="toc-text">6. 按用途分类处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A7-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">8.</span> <span class="toc-text">🔧 项目配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">8.1.</span> <span class="toc-text">当前项目配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TypeScript-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="toc-number">8.2.</span> <span class="toc-text">TypeScript 类型声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">9.</span> <span class="toc-text">⚠️ 注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8C%90-WebP-AVIF-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-number">10.</span> <span class="toc-text">🌐 WebP&#x2F;AVIF 浏览器兼容性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WebP-%E6%94%AF%E6%8C%81"><span class="toc-number">10.1.</span> <span class="toc-text">WebP 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AVIF-%E6%94%AF%E6%8C%81"><span class="toc-number">10.2.</span> <span class="toc-text">AVIF 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%94%AF%E6%8C%81"><span class="toc-number">10.3.</span> <span class="toc-text">移动端支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E5%AF%B9%E6%AF%94"><span class="toc-number">10.4.</span> <span class="toc-text">文件大小对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-number">11.</span> <span class="toc-text">📚 相关链接</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%96-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">📖 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%99%EF%B8%8F-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">⚙️ 插件配置参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#include-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E8%A7%84%E5%88%99"><span class="toc-number">2.1.</span> <span class="toc-text">include - 文件包含规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exclude-%E6%96%87%E4%BB%B6%E6%8E%92%E9%99%A4%E8%A7%84%E5%88%99"><span class="toc-number">2.2.</span> <span class="toc-text">exclude - 文件排除规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#defaultDirectives-%E9%BB%98%E8%AE%A4%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4"><span class="toc-number">2.3.</span> <span class="toc-text">defaultDirectives - 默认处理指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#removeMetadata-%E7%A7%BB%E9%99%A4%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">2.4.</span> <span class="toc-text">removeMetadata - 移除元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#namedExports-%E5%91%BD%E5%90%8D%E5%AF%BC%E5%87%BA"><span class="toc-number">2.5.</span> <span class="toc-text">namedExports - 命名导出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">🎯 查询参数详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%BA%E5%AF%B8%E6%8E%A7%E5%88%B6%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.</span> <span class="toc-text">尺寸控制参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">格式转换参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E8%A7%89%E6%95%88%E6%9E%9C%E5%8F%82%E6%95%B0"><span class="toc-number">3.3.</span> <span class="toc-text">视觉效果参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%8F%82%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">高级参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%A4-%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">📤 输出格式详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E8%BE%93%E5%87%BA%EF%BC%88URL-%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">默认输出（URL 字符串）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-srcset-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87%E9%9B%86"><span class="toc-number">4.2.</span> <span class="toc-text">as&#x3D;srcset - 响应式图片集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-metadata-%E5%9B%BE%E7%89%87%E5%85%83%E4%BF%A1%E6%81%AF"><span class="toc-number">4.3.</span> <span class="toc-text">as&#x3D;metadata - 图片元信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-img-%E5%9B%BE%E7%89%87%E5%AF%B9%E8%B1%A1"><span class="toc-number">4.4.</span> <span class="toc-text">as&#x3D;img - 图片对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as-picture-Picture-%E5%85%83%E7%B4%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">4.5.</span> <span class="toc-text">as&#x3D;picture - Picture 元素数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%80-%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">5.</span> <span class="toc-text">🚀 实际使用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80-WebP-%E8%BD%AC%E6%8D%A2"><span class="toc-number">5.1.</span> <span class="toc-text">1. 基础 WebP 转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E5%83%8F"><span class="toc-number">5.2.</span> <span class="toc-text">2. 响应式图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%9A%E6%A0%BC%E5%BC%8F%E6%94%AF%E6%8C%81"><span class="toc-number">5.3.</span> <span class="toc-text">3. 多格式支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B8%90%E8%BF%9B%E5%BC%8F-WebP-%E5%9B%BE%E5%83%8F"><span class="toc-number">5.4.</span> <span class="toc-text">4. 渐进式 WebP 图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%83%8C%E6%99%AF%E5%9B%BE%E5%83%8F%E4%BC%98%E5%8C%96"><span class="toc-number">5.5.</span> <span class="toc-text">5. 背景图像优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%EF%BC%9APicture-%E5%85%83%E7%B4%A0"><span class="toc-number">5.6.</span> <span class="toc-text">6. 高级用法：Picture 元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E6%80%A7%E8%83%BD%E5%BD%B1%E5%93%8D%E5%AF%B9%E6%AF%94"><span class="toc-number">6.</span> <span class="toc-text">📊 性能影响对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E5%AF%B9%E6%AF%94%EF%BC%88%E4%BB%A5-1MB-%E5%8E%9F%E5%A7%8B-JPEG-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">6.1.</span> <span class="toc-text">文件大小对比（以 1MB 原始 JPEG 为例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%97%B6%E9%97%B4%E5%BD%B1%E5%93%8D"><span class="toc-number">6.2.</span> <span class="toc-text">构建时间影响</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">7.</span> <span class="toc-text">💡 最佳实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E5%9B%BE%E7%89%87"><span class="toc-number">7.1.</span> <span class="toc-text">1. 选择合适的图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%B4%A8%E9%87%8F%E8%AE%BE%E7%BD%AE"><span class="toc-number">7.2.</span> <span class="toc-text">2. 质量设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E5%83%8F"><span class="toc-number">7.3.</span> <span class="toc-text">3. 响应式图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%99%8D%E7%BA%A7%E6%96%B9%E6%A1%88"><span class="toc-number">7.4.</span> <span class="toc-text">4. 降级方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%8E%A8%E8%8D%90"><span class="toc-number">7.5.</span> <span class="toc-text">5. 基础配置推荐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%8C%89%E7%94%A8%E9%80%94%E5%88%86%E7%B1%BB%E5%A4%84%E7%90%86"><span class="toc-number">7.6.</span> <span class="toc-text">6. 按用途分类处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A7-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">8.</span> <span class="toc-text">🔧 项目配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="toc-number">8.1.</span> <span class="toc-text">当前项目配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TypeScript-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="toc-number">8.2.</span> <span class="toc-text">TypeScript 类型声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">9.</span> <span class="toc-text">⚠️ 注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8C%90-WebP-AVIF-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-number">10.</span> <span class="toc-text">🌐 WebP&#x2F;AVIF 浏览器兼容性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WebP-%E6%94%AF%E6%8C%81"><span class="toc-number">10.1.</span> <span class="toc-text">WebP 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AVIF-%E6%94%AF%E6%8C%81"><span class="toc-number">10.2.</span> <span class="toc-text">AVIF 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%94%AF%E6%8C%81"><span class="toc-number">10.3.</span> <span class="toc-text">移动端支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E5%AF%B9%E6%AF%94"><span class="toc-number">10.4.</span> <span class="toc-text">文件大小对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">11.</span> <span class="toc-text">图片压缩的选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="toc-number">12.</span> <span class="toc-text">📚 相关链接</span></a></li></ol>
                 </div>
             </div>
             
