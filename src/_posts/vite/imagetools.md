@@ -819,6 +819,7 @@ imagetools 可以压缩图片体积，但是，针对不同格式的图片，适
 
 ```ts
 import { defineConfig } from 'vite'
+import { imagetools } from 'vite-imagetools'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 export default defineConfig({
@@ -843,12 +844,15 @@ export default defineConfig({
       },
     }),
     /**
-     * 处理所有图片的压缩优化
-     *
-     * 在编译后处理，对 JS/CSS 中各类方式使用的所有图片生效
-     */
+       * 处理所有图片的压缩优化
+       *
+       * 在编译后处理，对 JS/CSS 中各类方式使用的所有图片生效
+       *
+       *  - xx.ignore.xxx 格式的图片文件不会被压缩，用于特殊情况下跳过
+       *    例如：.png 格式的 apng 动图需要命名为 xxx.ignore.png 以跳过压缩，否则会被转换为静态图片
+       */
     ViteImageOptimizer({
-      test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
+      test: /^(?!.*\.ignore\.).*\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
       includePublic: true,
       // include: ['src/pages/party/lottery'], // 仅处理 lottery 目录
       // 排除其他目录，减少内存占用
