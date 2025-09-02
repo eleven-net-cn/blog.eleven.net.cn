@@ -107,7 +107,7 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    29k
+                    30k
                 </span>
                 
                 
@@ -721,6 +721,7 @@ declare module &#39;*.avif?*&#39; &#123;
 <p>因此，更推荐搭配其它图片压缩插件一起工作，图片压缩交由其它插件负责，imagetools 负责转格式等更多功能。</p>
 <p>在诸多可用方案中，<a target="_blank" rel="noopener" href="https://github.com/FatehAK/vite-plugin-image-optimizer">vite-plugin-image-optimizer</a> 工作效果不错。</p>
 <pre><code class="ts">import &#123; defineConfig &#125; from &#39;vite&#39;
+import &#123; imagetools &#125; from &#39;vite-imagetools&#39;
 import &#123; ViteImageOptimizer &#125; from &#39;vite-plugin-image-optimizer&#39;
 
 export default defineConfig(&#123;
@@ -745,12 +746,15 @@ export default defineConfig(&#123;
       &#125;,
     &#125;),
     /**
-     * 处理所有图片的压缩优化
-     *
-     * 在编译后处理，对 JS/CSS 中各类方式使用的所有图片生效
-     */
+       * 处理所有图片的压缩优化
+       *
+       * 在编译后处理，对 JS/CSS 中各类方式使用的所有图片生效
+       *
+       *  - xx.ignore.xxx 格式的图片文件不会被压缩，用于特殊情况下跳过
+       *    例如：.png 格式的 apng 动图需要命名为 xxx.ignore.png 以跳过压缩，否则会被转换为静态图片
+       */
     ViteImageOptimizer(&#123;
-      test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
+      test: /^(?!.*\.ignore\.).*\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
       includePublic: true,
       // include: [&#39;src/pages/party/lottery&#39;], // 仅处理 lottery 目录
       // 排除其他目录，减少内存占用
